@@ -1,0 +1,219 @@
+---
+title: "Zoning with GeoFIS"
+subtitle: "Package GeoFIS `r packageVersion('GeoFIS')`"
+author: "Jean-Luc Lablée, Serge Guillaume"
+output: 
+  rmarkdown::html_vignette:
+    fig_height: 5.5
+    fig_width: 7
+    toc: true
+    toc_depth: 4
+vignette: >
+  %\VignetteIndexEntry{Zoning with GeoFIS}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: "`r system.file('REFERENCES.bib', package='GeoFIS')`"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+This vignette shows how to generate management zones from data with GeoFIS [@Pedroso10].
+
+See [Zoning documentation](https://www.geofis.org/en/documentation-en/zoning/) for more details about the zoning algorithm.
+
+```{r, setup}
+library(GeoFIS)
+```
+
+## Loading data
+
+The zoning process accepts input dataset of class [SpatialPointsDataFrame](https://www.rdocumentation.org/packages/sp/topics/SpatialPointsDataFrame) or [SpatialMultiPointsDataFrame](https://www.rdocumentation.org/packages/sp/topics/SpatialMultiPointsDataFrame) of the [sp](https://cran.r-project.org/package=sp) R package.<br>
+It keeps only the attributes that can be used in the zoning process, meaning numeric attributes, without missing values and with a range that is not limited to a unique value. The last condition is required by the min-max standardization process.<br>
+The input dataset must be in a projected coordinate reference system.
+
+In this example the `conductivity_2014` input dataset is used. It is included in the GeoFIS R package, each location is described by a single numeric attribute `conduct`:
+
+```{r}
+data(conductivity_2014)
+zoning <- NewZoning(conductivity_2014)
+```
+
+The zonable dataset used by the zoning process is available through the `zonable_data` method. In this example `zonable_data` is identical to `conductivity_2014`.
+
+```{r}
+zonable_data <- zoning$zonable_data()
+```
+
+## Main parameters
+
+### The border
+
+The border is a polygon used to limit the processed area. Only data points within the border are processed.
+
+If `NULL` the Convex Hull polygon of the input dataset will be used (computed with [gConvexHull](https://www.rdocumentation.org/packages/rgeos/topics/gConvexHull) function of the [rgeos](https://cran.r-project.org/package=rgeos) R package).
+
+```{r}
+zoning$border <- NULL
+```
+
+An object of class [SpatialPolygons](https://www.rdocumentation.org/packages/sp/topics/SpatialPolygons) can be used as border:
+
+```{r}
+data(conductivity_border)
+zoning$border <- conductivity_border
+```
+
+#### Show the Voronoi diagram
+
+```{r}
+zoning$perform_voronoi()
+vm <- zoning$voronoi_map()
+par(mar = c(0, 0, 0, 0))
+plot(vm)
+plot(zoning$zonable_data(), add = TRUE)
+```
+
+### The neighborhood
+
+The neighborhood relation can be filtered by a minimal common edge length.
+
+If `NULL` all contiguous Voronoi polygons are considered as neighbors: 
+
+```{r}
+zoning$neighborhood <- NULL
+```
+
+The user can define the minimum edge length (in the same unit as the input dataset coordinate system) shared by two Voronoi polygons for being considered as neighbors:
+
+```{r}
+zoning$neighborhood <- 5
+```
+
+#### Show the neighborhood relations
+
+The red lines shows the pairs of Voronoi polygons that are no longer considered as neighbors.
+
+```{r}
+zoning$perform_neighborhood()
+nm <- zoning$neighborhood_map()
+par(mar = c(0, 0, 0, 0))
+plot(vm)
+plot(subset(nm, filtered == FALSE), add = TRUE, col = "green")
+plot(subset(nm, filtered == TRUE), add = TRUE, col = "red")
+```
+
+### Attribute distance
+
+This distance function is used for a given attribute. It computes the distance between two data points in the monodimensional attribute space. As many distance functions as there are attributes in the zonable dataset are needed (in a list if multiple attributes).<br>
+Two univariate distances are available: `EuclideanDistance` (the default) or `FuzzyDistance`. Or `NULL` if the attribute should not be used in the zoning process.
+
+The fuzzy distance function is based on a fuzzy partition that allows for integrating expert knowledge into distance calculations [@Infsci13; @fuzzieee13]. The partition must be a standardized fuzzy partition based on a `FisIn` object of the [FisPro](https://cran.r-project.org/package=FisPro) R package.
+
+The following command-line sets the fuzzy distance based on 3 Mfs-partition defined by the following breakpoints: 20, 30, 100. The range of the `conduct` attribute is [12, 116]:
+
+```{r}
+zoning$attribute_distance <- FuzzyDistance(NewFisIn(c(20, 30, 100), 12, 116))
+```
+
+The default value, used in this example, is the euclidean distance:
+
+```{r}
+zoning$attribute_distance <- EuclideanDistance()
+```
+
+### Zone distance aggregation
+
+To compute the distance between two zones, all the data points included in the two zones are considered and the aggregation is done using the aggreg parameter: 
+
+$$ d(z_i,z_j) = (Aggreg) d(x,y), \forall x \in z_i, y \in z_j$$
+Three aggreg operators are available: `MinimumDistance`, `MaximumDistance` (the default) or `MeanDistance`.<br>
+The two zones to be merged at a given iteration are the ones for which the zone distance is minimum.
+
+```{r}
+zoning$zone_distance <- MaximumDistance()
+```
+
+### Combine distance
+
+The combination function distance is needed when the zoning is done according to several attributes. In this case, each univariate or elementary distance is computed and normalized in a unit interval. These partial distances are then aggregated to yield the distance between two data points in the multidimensional attribute space. The distance combination is done before computing the between-zones distance.<br>
+Two combinations are proposed: `EuclideanDistance` (the default) or `MinkowskiDistance`.
+
+```{r}
+zoning$combine_distance <- EuclideanDistance()
+```
+
+### Smallest zone
+
+This criterion is used to determine the smallest size for a zone (number of points or area) to be kept in the final map. The zones with a size less than the threshold are included in the most compatible neighboring zone.<br>
+The two available parameters are: `ZoneSize` or `ZoneArea`.<br>
+The default value is `ZoneSize` with 1 point.
+
+```{r}
+zoning$smallest_zone <- ZoneSize(1)
+```
+
+## Perform zoning
+
+```{r}
+zoning$perform_zoning()
+```
+
+Get the map with 5 zones:
+
+```{r}
+map5 <- zoning$map(5)
+```
+
+The result map contains for each zone:
+
+* the id
+* the number of points
+* the area
+* the mean of the attribute
+* the std of the attribute
+
+```{r}
+print(map5@data)
+```
+
+Plot the map:
+
+```{r}
+library(RColorBrewer)
+
+palette <- brewer.pal(3, "Blues")
+breaks <- c(30, 50, 70, 100)
+colors <- palette[findInterval(map5$conduct_mean, vec = breaks)]
+par(mar = c(0, 0, 2, 0))
+plot(map5, col = colors, main = "Map 5 zones")
+legend("bottomright", legend = levels(cut(map5$conduct_mean, breaks)), 
+  fill = palette, title = "Conductivity mean")
+```
+
+### Save the map
+
+Any map can be exported to various common file format, e.g. Shapefile:
+
+```{r, message=FALSE, warning=FALSE}
+library(rgdal)
+
+writeOGR(map5, dsn = ".", layer = "map5", driver = "ESRI Shapefile")
+```
+
+```{r, include=FALSE}
+file.remove(dir(path = ".", pattern = "map5.*"))
+```
+
+## Publications
+
+---
+nocite: |
+  @agriculture8060073
+...
