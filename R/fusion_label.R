@@ -48,7 +48,6 @@
 #' @export
 FusionLabel <- R6Class("FusionLabel",
   cloneable = FALSE,
-
   active = list(
     #' @field very_low [character] vector (read-only), The very_low label
     very_low = function() {
@@ -75,7 +74,6 @@ FusionLabel <- R6Class("FusionLabel",
       return("very high")
     }
   ),
-
   public = list(
     #' @description Get the allowed labels depending on the granularity in the [Fis]\cr
     #' for granularity 2, allowed labels are: \[low, high\]\cr

@@ -83,13 +83,11 @@
 #' @export
 Fusion <- R6Class("Fusion",
   cloneable = FALSE,
-
   private = list(
     .source = NULL,
     .aggregate = NULL,
     .output = NULL
   ),
-
   active = list(
     #' @field aggregate [Node] object, or a [list] of [Node], The node(s) to aggregate
     aggregate = function(aggregate) {
@@ -105,7 +103,6 @@ Fusion <- R6Class("Fusion",
       }
     }
   ),
-
   public = list(
     #' @description The constructor to build an object of class [Fusion].
     #' @param source [data.frame] or [Spatial]*DataFrame object of [sp] package\cr

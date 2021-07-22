@@ -61,11 +61,11 @@ template <> float tolerance<float>();
 template <> double tolerance<double>();
 template <> long double tolerance<long double>();
 
-template <class T> inline bool is_equal(T x, T y, T tolerance = tolerance<T>()) { return boost_test::close_at_tolerance<T>(boost_test::percent_tolerance(tolerance))(x, y); }
-template <class T> inline bool is_less(T x, T y, T tolerance = tolerance<T>()) { return (x < y) && !is_equal(x, y, tolerance); }
-template <class T> inline bool is_greater(T x, T y, T tolerance = tolerance<T>()) { return (x > y) && !is_equal(x, y, tolerance); }
-template <class T> inline bool is_less_equal(T x, T y, T tolerance = tolerance<T>()) { return (x < y) || is_equal(x, y, tolerance); }
-template <class T> inline bool is_greater_equal(T x, T y, T tolerance = tolerance<T>()) { return (x > y) || is_equal(x, y, tolerance); }
+template <class T> inline bool is_equal(T x, T y, T tolerance = util::detail::tolerance<T>()) { return boost_test::close_at_tolerance<T>(boost_test::percent_tolerance(tolerance))(x, y); }
+template <class T> inline bool is_less(T x, T y, T tolerance = util::detail::tolerance<T>()) { return (x < y) && !is_equal(x, y, tolerance); }
+template <class T> inline bool is_greater(T x, T y, T tolerance = util::detail::tolerance<T>()) { return (x > y) && !is_equal(x, y, tolerance); }
+template <class T> inline bool is_less_equal(T x, T y, T tolerance = util::detail::tolerance<T>()) { return (x < y) || is_equal(x, y, tolerance); }
+template <class T> inline bool is_greater_equal(T x, T y, T tolerance = util::detail::tolerance<T>()) { return (x > y) || is_equal(x, y, tolerance); }
 
 } // namespace detail
 } // namespace util

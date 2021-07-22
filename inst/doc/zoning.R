@@ -78,10 +78,9 @@ legend("bottomright", legend = levels(cut(map5$conduct_mean, breaks)),
   fill = palette, title = "Conductivity mean")
 
 ## ---- message=FALSE, warning=FALSE------------------------------------------------------------------------------------------------------------------------------------------------
-library(rgdal)
-
-writeOGR(map5, dsn = ".", layer = "map5", driver = "ESRI Shapefile")
+# if (require(rgdal))
+#   writeOGR(map5, dsn = tempdir(), layer = "map5", driver = "ESRI Shapefile")
 
 ## ---- include=FALSE---------------------------------------------------------------------------------------------------------------------------------------------------------------
-file.remove(dir(path = ".", pattern = "map5.*"))
+# file.remove(dir(path = tempdir(), pattern = "map5.*"))
 

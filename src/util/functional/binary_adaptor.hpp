@@ -54,9 +54,8 @@ template <class Binary, class IsVariant = typename binary_adaptor_traits<Binary>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-template <class Binary> class binary_adaptor<Binary, boost::false_type> {
+template <class Binary> struct binary_adaptor<Binary, boost::false_type> {
 
-public:
 	typedef typename binary_adaptor_traits<Binary>::result_type result_type;
 
 	binary_adaptor() {}
@@ -79,7 +78,6 @@ public:
 		return binary(lhs, rhs);
 	}
 
-private:
 	Binary binary;
 };
 

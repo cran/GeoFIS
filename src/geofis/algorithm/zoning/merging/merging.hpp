@@ -224,9 +224,13 @@ public:
 
 	template <class ZoneNeighborPredicate, class ZoneDistance, class ZonePairMerger> void compute_merge_zones(const ZoneNeighborPredicate &zone_neighbor_predicate, const ZoneDistance &zone_distance, const ZonePairMerger &zone_pair_merger) {
 		while(!merged_zones.empty()) {
+#ifndef R_PACKAGE
 			size_t merged_zones_size = merged_zones.size();
+#endif
 			compute_merged_zones(boost::begin(merged_zones), boost::end(merged_zones), zone_neighbor_predicate, zone_distance, zone_pair_merger);
+#ifndef R_PACKAGE
 			UTIL_ENSURE( merged_zones_size != merged_zones.size() );
+#endif
 		}
 	}
 

@@ -178,7 +178,7 @@ void fusion_process_impl::aggregate_zone_pairs(const zone_pair_updater_type &zon
 	}
 }
 
-void fusion_process_impl::aggregate_zone_pair(const zone_pair_iterator_type &zone_pair_to_merge, const zone_pair_updater_type &zone_pair_updater, zone_pair_iterator_container_type &zone_pairs_to_merge) {
+void fusion_process_impl::aggregate_zone_pair(zone_pair_iterator_type zone_pair_to_merge, const zone_pair_updater_type &zone_pair_updater, zone_pair_iterator_container_type &zone_pairs_to_merge) {
 	zone_fusions.push_back(zone_fusion_type(*zone_pair_to_merge));
 	zone_pairs_to_merge.remove(zone_pair_to_merge);
 	zone_pairs.erase(zone_pair_to_merge);

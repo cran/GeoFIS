@@ -100,7 +100,7 @@ public:
 private:
 	void initialize_zone_pairs_with_neighbors(const zone_distance_type &zone_distance, zone_neighbor_range_type &zone_neighbors);
 	void aggregate_zone_pairs(const zone_pair_updater_type &zone_pair_updater);
-	void aggregate_zone_pair(const zone_pair_iterator_type &iterator, const zone_pair_updater_type &zone_pair_updater, zone_pair_iterator_container_type &zone_pairs_to_merge);
+	void aggregate_zone_pair(zone_pair_iterator_type zone_pair_to_merge, const zone_pair_updater_type &zone_pair_updater, zone_pair_iterator_container_type &zone_pairs_to_merge);
 	void normalize_attribute_distances(attribute_distance_range_type &attribute_distances);
 };
 

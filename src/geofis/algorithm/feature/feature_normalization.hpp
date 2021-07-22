@@ -125,7 +125,7 @@ template <class IsMonodimensionalFeature, class FeatureIterator> inline feature_
 
 // specialization of feature_normalization for monodimensional feature
 
-template <class Feature> struct feature_normalization<Feature, boost::true_type> {
+template <class Feature> class feature_normalization<Feature, boost::true_type> {
 
 	typedef typename Feature::attribute_type attribute_type;
 
@@ -156,7 +156,7 @@ private:
 
 // specialization of feature_normalization for multidimensional feature
 
-template <class Feature> struct feature_normalization<Feature, boost::false_type> {
+template <class Feature> class feature_normalization<Feature, boost::false_type> {
 
 	typedef typename Feature::attribute_type attribute_type;
 

@@ -1,6 +1,7 @@
 context("AggregFis")
 
 test_that("test aggreg Fis error", {
+  skip_fusion_test()
   input1 <- NewFisIn()
   input1$name <- "foo1"
   input2 <- NewFisIn(0, 2)
@@ -38,6 +39,7 @@ test_that("test aggreg Fis error", {
 })
 
 test_that("test aggreg Fis", {
+  skip_fusion_test()
   fis <- NewFis("test.fis")
   leaf1 <- Node$new("l1")
   leaf1$sat <- 0.25

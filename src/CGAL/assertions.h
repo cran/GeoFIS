@@ -37,7 +37,7 @@
 #  endif
 #endif
 
-#ifdef CGAL_NDEBUG
+#if defined(CGAL_NDEBUG) || defined(R_PACKAGE)
 #  define CGAL_NO_ASSERTIONS
 #  define CGAL_NO_PRECONDITIONS
 #  define CGAL_NO_POSTCONDITIONS

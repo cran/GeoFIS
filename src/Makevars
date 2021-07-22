@@ -1,16 +1,18 @@
 # cgal library needs to be compiled in c++14 standard
 CXX_STD=CXX14
 
-FISPRO_LIB_DIR=$(shell echo "cat(system.file('lib', package='FisPro', mustWork=TRUE))" | "$(R_HOME)/bin/R" --vanilla --slave)
+FISPRO_LIB_DIR=$(shell $(R_HOME)/bin/Rscript -e "cat(system.file('lib', package='FisPro', mustWork=TRUE))")
 
-PKG_CPPFLAGS=-I. -DBOOST_NO_AUTO_PTR -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_MP_DISABLE_DEPRECATE_03_WARNING -DBOOST_MATH_DISABLE_DEPRECATED_03_WARNING -DR_PACKAGE
+BOOST_CPPFLAGS=-DBOOST_NO_AUTO_PTR -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_MP_DISABLE_DEPRECATE_03_WARNING -DBOOST_MATH_DISABLE_DEPRECATED_03_WARNING -DBOOST_DISABLE_ASSERTS
+CGAL_CPPFLAGS=-DCGAL_DISABLE_ROUNDING_MATH_CHECK=ON
+PKG_CPPFLAGS=-I. $(BOOST_CPPFLAGS) $(CGAL_CPPFLAGS) -DR_PACKAGE
 PKG_LIBS=-L$(FISPRO_LIB_DIR)$(R_ARCH) -lmpfr -lgmp -lFisPro
 
 UTIL=util
 FISPRO=base
 ZONING=geofis/process/zoning
 
-UTIL_SOURCES=$(UTIL)/assert.cpp $(UTIL)/double/double.cpp $(UTIL)/double/boost_double_comparison.cpp
+UTIL_SOURCES=$(UTIL)/double/double.cpp $(UTIL)/double/boost_double_comparison.cpp
 ZONING_SOURCES=$(ZONING)/voronoi/voronoi_process_impl.cpp $(ZONING)/voronoi/voronoi_process.cpp $(ZONING)/neighborhood/neighborhood_process_impl.cpp $(ZONING)/neighborhood/neighborhood_process.cpp $(ZONING)/fusion/fusion_process_impl.cpp $(ZONING)/fusion/fusion_process.cpp $(ZONING)/merge/merge_process_impl.cpp $(ZONING)/merge/merge_process.cpp $(ZONING)/zoning_process_impl.cpp $(ZONING)/zoning_process.cpp
 GEOFIS_SOURCES=$(ZONING_SOURCES)
 WRAPPER_SOURCES=zoning_wrapper.cpp

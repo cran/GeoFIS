@@ -41,6 +41,13 @@
 
 //#define NO_UTIL_ASSERT_TRHOW // to disable exception throwing on assertion failed, by default an exception is thrown when assertion is failed (in debug and in release mode)
 
+#ifdef R_PACKAGE
+
+#define UTIL_ASSERT(condition) ((void)0)
+#define UTIL_ALLEGE(condition) ((void)0)
+
+#else // NOT R_PACKAGE
+
 #ifdef NDEBUG // RELEASE
 
 #ifdef NO_UTIL_ASSERT_TRHOW // NO_THROW
@@ -73,6 +80,8 @@ void debug_assert(const char *message, char const *file, unsigned line);
 #define UTIL_ALLEGE(condition) UTIL_ASSERT(condition)
 
 #endif // END DEBUG
+
+#endif // R_PACKAGE
 
 #define UTIL_REQUIRE(condition) UTIL_ASSERT(condition)
 #define UTIL_ENSURE(condition) UTIL_ASSERT(condition)

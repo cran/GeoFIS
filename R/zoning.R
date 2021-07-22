@@ -54,10 +54,10 @@
 #' @name Zoning
 #' @docType class
 #' @description The main class to perform zoning\cr
-#' More information is available in the vignette "Zoning with GeoFIS"
+#' A complete use-case example is described in the vignette "Zoning with GeoFIS"
 #'
 #' @importFrom R6 R6Class
-#' @importFrom rgeos gConvexHull
+#' @importFrom rgeos gConvexHull gIsValid
 #' @import sp
 #'
 #' @references {
@@ -74,40 +74,14 @@
 #' [Zoning documentation](https://www.geofis.org/en/documentation-en/zoning/)
 #' }
 #'
-#' @examples
-#' library(GeoFIS)
-#'
-#' data(conductivity_2014)
-#' data(conductivity_border)
-#' zoning <- NewZoning(conductivity_2014)
-#' zoning$border <- conductivity_border
-#' zoning$neighborhood <- 5
-#' zoning$perform_zoning()
-#' map5 <- zoning$map(5)
-#'
-#' # plot the map
-#' library(RColorBrewer)
-#' palette <- brewer.pal(3, "Blues")
-#' breaks <- c(30, 50, 70, 100)
-#' colors <- palette[findInterval(map5$conduct_mean, vec = breaks)]
-#' par(mar = c(0, 0, 2, 0))
-#' plot(map5, col = colors, main = "Map 5 zones")
-#' legend("bottomright", legend = levels(cut(map5$conduct_mean, breaks)),
-#'   fill = palette, title = "Conductivity mean")
-#'
-#' # export the map as Shapefile (replace tempdir() with the directory you want to put the map)
-#' library(rgdal)
-#' writeOGR(map5, dsn = tempdir(), layer = "map5", driver = "ESRI Shapefile")
 #' @export
 Zoning <- R6Class("Zoning",
   cloneable = FALSE,
-
   private = list(
     .zonable_data = NULL,
     .border = NULL,
     .neighborhood = NULL,
     .zoning_wrapper = NULL,
-
     .check_zonable_data = function(source, zonable, warn) {
       if (ncol(zonable) == 0) stop("zoning data source must contains at least one zonable data")
       if (warn && (ncol(source) != ncol(zonable))) {
@@ -115,11 +89,9 @@ Zoning <- R6Class("Zoning",
         warning(paste("attribute(s) [", paste(not_zonable_attributes, collapse = ", "), "] not zonable"))
       }
     },
-
     .check_border_crs = function(border) {
       if (!identicalCRS(border, private$.zonable_data)) stop("border must have the same coordinate system as the data source")
     },
-
     .check_border_overlay = function(border) {
       zonable_overlay <- over(private$.zonable_data, border)
       zonable_out_border <- sum(is.na(zonable_overlay))
@@ -130,31 +102,27 @@ Zoning <- R6Class("Zoning",
         warning(paste(zonable_out_border, "points are outside the border"))
       }
     },
-
     .check_border_geometry = function(border) {
       if (!is(border, "SpatialPolygons")) stop("the border must be a 'SpatialPolygons' object")
+      if (!gIsValid(border)) stop("the border is not a valid polygon")
       polygons_list <- border@polygons
       if (length(polygons_list) != 1) stop("the border must contain only one polygon")
       polygons <- polygons_list[[1]]
       polygon_list <- polygons@Polygons
-      if (length(polygons_list) != 1) stop("the border must contain only one polygon")
+      if (length(polygon_list) != 1) stop("the border must contain only one polygon")
     },
-
     .check_border = function(border) {
       private$.check_border_crs(border)
       private$.check_border_geometry(border)
       private$.check_border_overlay(border)
     },
-
     .check_neighborhood = function(neighborhood) {
       if (!is.numeric(neighborhood)) stop("the neighborhood must be a numeric value")
       if (neighborhood < 0) stop("the neighborhood must be a positive value")
     },
-
     .zonable_data_size = function() {
       return(ncol(private$.zonable_data@data))
     },
-
     .check_attribute_distance = function(attribute_distance) {
       if (is.null(attribute_distance)) stop("the attribute distance cannot be NULL")
       if (!is.list(attribute_distance)) {
@@ -167,7 +135,6 @@ Zoning <- R6Class("Zoning",
         stop("at least one attribute distance must not be NULL")
       }
     },
-
     .check_orphan_zones = function() {
       bounded_feature_size <- private$.zoning_wrapper$get_bounded_feature_size()
       fusion_size <- private$.zoning_wrapper$get_fusion_size()
@@ -179,7 +146,6 @@ Zoning <- R6Class("Zoning",
       }
     }
   ),
-
   active = list(
     #' @field border [SpatialPolygons] object, The border used to limit the processed area, or `NULL` if the Convex Hull of data source is used\cr
     #' Only data points within the border polygon are processed\cr
@@ -267,7 +233,6 @@ Zoning <- R6Class("Zoning",
       private$.zoning_wrapper$release_merge()
     }
   ),
-
   public = list(
     #' @description Constructor, create a new instance of [Zoning]
     #' @param source [SpatialPointsDataFrame] or [SpatialMultiPointsDataFrame] object, The data source

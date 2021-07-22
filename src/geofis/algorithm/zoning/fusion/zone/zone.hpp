@@ -62,7 +62,7 @@
 
 namespace geofis {
 
-class zone_attributes_computer;
+struct zone_attributes_computer;
 template <class ZoneFusion> class zone_geometry_computer;
 template <class Zone> class zone_area_computer;
 

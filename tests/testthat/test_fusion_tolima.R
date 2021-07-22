@@ -88,6 +88,7 @@ check_chemical <- function(ag) {
 }
 
 test_that("Tolima fusion", {
+  skip_fusion_test()
   fusion <- get_fusion()
   fusion$perform()
   output <- fusion$output()
@@ -96,6 +97,7 @@ test_that("Tolima fusion", {
 })
 
 test_that("Tolima aggregate node", {
+  skip_fusion_test()
   macronutrients <- .aggregate_node(get_numeric_data(), get_macronutrients_aggreg())
   check_macronutrients(macronutrients)
   chemical <- .aggregate_node(get_numeric_data(), get_chemical_aggreg())

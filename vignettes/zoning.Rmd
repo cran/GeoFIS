@@ -34,7 +34,7 @@ library(GeoFIS)
 
 ## Loading data
 
-The zoning process accepts input dataset of class [SpatialPointsDataFrame](https://www.rdocumentation.org/packages/sp/topics/SpatialPointsDataFrame) or [SpatialMultiPointsDataFrame](https://www.rdocumentation.org/packages/sp/topics/SpatialMultiPointsDataFrame) of the [sp](https://cran.r-project.org/package=sp) R package.<br>
+The zoning process accepts input dataset of class `SpatialPointsDataFrame` or `SpatialMultiPointsDataFrame` of the [sp](https://cran.r-project.org/package=sp) R package.<br>
 It keeps only the attributes that can be used in the zoning process, meaning numeric attributes, without missing values and with a range that is not limited to a unique value. The last condition is required by the min-max standardization process.<br>
 The input dataset must be in a projected coordinate reference system.
 
@@ -199,16 +199,16 @@ legend("bottomright", legend = levels(cut(map5$conduct_mean, breaks)),
 
 ### Save the map
 
-Any map can be exported to various common file format, e.g. Shapefile:
+Any map can be exported to various common file format, e.g. Shapefile: 
+uncomment and replace tempdir() with the directory you want to export the map
 
 ```{r, message=FALSE, warning=FALSE}
-library(rgdal)
-
-writeOGR(map5, dsn = ".", layer = "map5", driver = "ESRI Shapefile")
+# if (require(rgdal))
+#   writeOGR(map5, dsn = tempdir(), layer = "map5", driver = "ESRI Shapefile")
 ```
 
 ```{r, include=FALSE}
-file.remove(dir(path = ".", pattern = "map5.*"))
+# file.remove(dir(path = tempdir(), pattern = "map5.*"))
 ```
 
 ## Publications

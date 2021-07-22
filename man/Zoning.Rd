@@ -6,32 +6,7 @@
 \title{Class "Zoning"}
 \description{
 The main class to perform zoning\cr
-More information is available in the vignette "Zoning with GeoFIS"
-}
-\examples{
-library(GeoFIS)
-
-data(conductivity_2014)
-data(conductivity_border)
-zoning <- NewZoning(conductivity_2014)
-zoning$border <- conductivity_border
-zoning$neighborhood <- 5
-zoning$perform_zoning()
-map5 <- zoning$map(5)
-
-# plot the map
-library(RColorBrewer)
-palette <- brewer.pal(3, "Blues")
-breaks <- c(30, 50, 70, 100)
-colors <- palette[findInterval(map5$conduct_mean, vec = breaks)]
-par(mar = c(0, 0, 2, 0))
-plot(map5, col = colors, main = "Map 5 zones")
-legend("bottomright", legend = levels(cut(map5$conduct_mean, breaks)),
-  fill = palette, title = "Conductivity mean")
-
-# export the map as Shapefile (replace tempdir() with the directory you want to put the map)
-library(rgdal)
-writeOGR(map5, dsn = tempdir(), layer = "map5", driver = "ESRI Shapefile")
+A complete use-case example is described in the vignette "Zoning with GeoFIS"
 }
 \references{
 {

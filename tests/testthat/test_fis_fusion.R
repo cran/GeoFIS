@@ -1,6 +1,7 @@
 context("FisFusion")
 
 test_that("new Fis fusion error", {
+  skip_fusion_test()
   # granularity range error
   expect_error(NewFisFusion("foo", NULL, c(1, 2), NULL, NULL))
   expect_error(NewFisFusion("foo", NULL, c(2, 6), NULL, NULL))
@@ -21,6 +22,7 @@ test_that("new Fis fusion error", {
 })
 
 test_that("make input", {
+  skip_fusion_test()
   expect_input(.MakeInput(2, "foo"), 2, "foo")
   expect_input(.MakeInput(3, "foo"), 3, "foo")
   expect_input(.MakeInput(4, "foo"), 4, "foo")
@@ -28,10 +30,12 @@ test_that("make input", {
 })
 
 test_that("make crisp output", {
+  skip_fusion_test()
   expect_crisp_output(.MakeCrispOutput("foo"), "foo")
 })
 
 test_that("make fuzzy output", {
+  skip_fusion_test()
   expect_fuzzy_output(.MakeFuzzyOutput(2, "foo"), 2, "foo")
   expect_fuzzy_output(.MakeFuzzyOutput(3, "foo"), 3, "foo")
   expect_fuzzy_output(.MakeFuzzyOutput(4, "foo"), 4, "foo")
@@ -39,6 +43,7 @@ test_that("make fuzzy output", {
 })
 
 test_that("make premises", {
+  skip_fusion_test()
   expected_premises <- matrix(c(
     1, 1,
     1, 2,
@@ -76,6 +81,7 @@ test_that("make premises", {
 })
 
 test_that("make crisp rules", {
+  skip_fusion_test()
   rules <- .MakeRules(c(2, 2), c(0, 1, 2, 3))
   expect_rule(rules[[1]], c(1, 1), 0)
   expect_rule(rules[[2]], c(1, 2), 1)
@@ -91,6 +97,7 @@ test_that("make crisp rules", {
 })
 
 test_that("make fuzzy rules", {
+  skip_fusion_test()
   fl <- FusionLabel$new()
   rules <- .MakeRules(c(2, 2), c(fl$high, fl$low, fl$low, fl$high))
   expect_rule(rules[[1]], c(1, 1), 2)
@@ -117,6 +124,7 @@ test_that("make fuzzy rules", {
 })
 
 test_that("new Fis fusion crisp output", {
+  skip_fusion_test()
   fl <- FusionLabel$new()
   fis <- NewFisFusion("foo", c("input1", "input2"), c(2, 2), "output", c(0, 0.25, 0.75, 1))
   expect_equal(fis$name, "foo")
@@ -134,6 +142,7 @@ test_that("new Fis fusion crisp output", {
 })
 
 test_that("new Fis fusion fuzzy output", {
+  skip_fusion_test()
   fl <- FusionLabel$new()
   fis <- NewFisFusion("foo", c("input1", "input2"), c(2, 2), "output", c(fl$low, fl$low, fl$high, fl$high))
   expect_equal(fis$name, "foo")
