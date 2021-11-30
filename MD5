@@ -1,6 +1,6 @@
-961e7e587c1d87c3f7f0a3fd55283a70 *DESCRIPTION
+c5610cb05a12e725513b5b33d49b61d6 *DESCRIPTION
 5d3e8e44c343384c3e2122017e568ebc *NAMESPACE
-75bedbd60817775929d32d9c0dcc1f52 *NEWS.md
+3e2814e91158529cc25c5627327f53dd *NEWS.md
 207eb00901dc054d74fcc65b50d2a6d9 *R/aggreg.R
 35fe034c030d1592dd374411c73de7f1 *R/aggreg_fis.R
 559a766f4f75a54141b0bf735bd0500d *R/aggreg_function.R
@@ -22,8 +22,8 @@ dcc07ead5f1f459defe8191afd4abd56 *R/sp.R
 a9b2a939fb0c1a758465950a50dbe59a *R/tolima_data.R
 cb19f4a096ca24721b02900550f02e2a *R/zoning.R
 29a96c39d98aa1788d930697f9d8ffe6 *README.md
-30d0be5e260a4dd7ce145a16007b533b *build/partial.rdb
-36ee5f959336287f5dbc7d7642c6c303 *build/vignette.rds
+24640e6710a60b372658be890ad78585 *build/partial.rdb
+7f90bb5ddfbbde80c14e95a637316f35 *build/vignette.rds
 499ce69566e1a3383177c1036c1fddb1 *cleanup
 03dc316d9927313bde912681cd3eb209 *cleanup.win
 6a8068416ef9d167ebce7382f1ee9583 *data/conductivity_2014.rda
@@ -33,10 +33,9 @@ f130b604951d93663f99620a34d96e85 *data/tolima.rda
 bf5f62f20320ab92aba79f9d3fa2ea3e *inst/REFERENCES.bib
 34d5227fc445339585bff2acc4c346ef *inst/doc/data-fusion.R
 7897b675bfe1887ab18d0dfa216c558d *inst/doc/data-fusion.Rmd
-6c6b80d0a9f79a4bcd3a1ac37778d26a *inst/doc/data-fusion.html
-4b679d9c00153c2a01cccebb54ba1a1d *inst/doc/zoning.R
-91edf7b4d2d9e6b0bbac14eeff876af2 *inst/doc/zoning.Rmd
-dc5ca35db729c757b4bd7c7a596b9c6d *inst/doc/zoning.html
+2a20e9fc22d36c3ae684bf88788d8f47 *inst/doc/data-fusion.html
+68904264bb7f60e703a5113cd2978515 *inst/doc/zoning.html
+9f015bd16c2c16cc3968ff8c6c97fbec *inst/doc/zoning.html.asis
 da3a028832c42c77f2b68cc980aa6ef4 *man/AggregFis.Rd
 8629e157ab20c23a5c4d2107fb13d126 *man/AggregFunction.Rd
 1885e3a0c28b24265b842cea3aa4eefa *man/AggregOwa.Rd
@@ -939,4 +938,4 @@ e2955a98e230bb6c95920b4e99ee262f *tests/testthat/test_learning_chaparral.R
 fb6a0db2aa26717f83d6fad7a91ea865 *tests/testthat/test_sp.R
 dffb2d8ec7cc1539bb561dd11d34486d *tests/testthat/test_zoning.R
 7897b675bfe1887ab18d0dfa216c558d *vignettes/data-fusion.Rmd
-91edf7b4d2d9e6b0bbac14eeff876af2 *vignettes/zoning.Rmd
+9f015bd16c2c16cc3968ff8c6c97fbec *vignettes/zoning.html.asis
