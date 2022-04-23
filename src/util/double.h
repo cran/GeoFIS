@@ -45,7 +45,7 @@ namespace std {
 
 #define FLOAT_SPECIALIZATION(class_to_specialize, type) \
 \
-template <> struct class_to_specialize<type> : public binary_function<type, type, bool> { \
+template <> struct class_to_specialize<type> { \
 \
 	class_to_specialize(); \
 	class_to_specialize(type tolerance) : tolerance(tolerance) {} \

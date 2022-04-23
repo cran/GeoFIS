@@ -1,5 +1,4 @@
-# cgal library needs to be compiled in c++14 standard
-CXX_STD=CXX14
+CXX_STD=CXX17
 
 FISPRO_LIB_DIR=$(shell $(R_HOME)/bin/Rscript -e "cat(system.file('lib', package='FisPro', mustWork=TRUE))")
 

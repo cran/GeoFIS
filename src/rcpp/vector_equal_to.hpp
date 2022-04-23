@@ -40,11 +40,10 @@
 #define H00683A8E_F8D5_4819_B75B_0436E68C661B
 
 #include <Rcpp.h>
-#include <functional>
 
 namespace std {
 
-template <int RTYPE> struct equal_to<Rcpp::Vector<RTYPE> > : public binary_function<Rcpp::Vector<RTYPE>, Rcpp::Vector<RTYPE>, bool> {
+template <int RTYPE> struct equal_to<Rcpp::Vector<RTYPE> > {
 
 	inline bool operator() (const Rcpp::Vector<RTYPE> &lhs, const Rcpp::Vector<RTYPE> &rhs) const {
 		// Rcpp sugar Vector operator== is in global namespace

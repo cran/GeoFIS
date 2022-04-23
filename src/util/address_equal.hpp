@@ -45,7 +45,7 @@
 
 namespace util {
 
-template <class T> struct address_equal_to : public std::binary_function<T, T, bool> {
+template <class T> struct address_equal_to {
 
 	bool operator()(const T &lhs, const T &rhs) const {
 		return boost::addressof(lhs) == boost::addressof(rhs);

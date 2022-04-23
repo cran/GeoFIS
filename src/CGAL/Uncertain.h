@@ -292,7 +292,7 @@ Uncertain<bool> operator!(Uncertain<bool> a)
 inline
 Uncertain<bool> operator|(Uncertain<bool> a, Uncertain<bool> b)
 {
-  return Uncertain<bool>(a.inf() | b.inf(), a.sup() | b.sup());
+  return Uncertain<bool>(a.inf() || b.inf(), a.sup() || b.sup());
 }
 
 inline
@@ -310,7 +310,7 @@ Uncertain<bool> operator|(Uncertain<bool> a, bool b)
 inline
 Uncertain<bool> operator&(Uncertain<bool> a, Uncertain<bool> b)
 {
-  return Uncertain<bool>(a.inf() & b.inf(), a.sup() & b.sup());
+  return Uncertain<bool>(a.inf() && b.inf(), a.sup() && b.sup());
 }
 
 inline

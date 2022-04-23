@@ -1,6 +1,6 @@
-c5610cb05a12e725513b5b33d49b61d6 *DESCRIPTION
+1d2dc9cd34ba84d6f9ab7843d25b11fb *DESCRIPTION
 5d3e8e44c343384c3e2122017e568ebc *NAMESPACE
-3e2814e91158529cc25c5627327f53dd *NEWS.md
+37c002e1a7a73018c64ea5e32c79c72b *NEWS.md
 207eb00901dc054d74fcc65b50d2a6d9 *R/aggreg.R
 35fe034c030d1592dd374411c73de7f1 *R/aggreg_fis.R
 559a766f4f75a54141b0bf735bd0500d *R/aggreg_function.R
@@ -22,8 +22,8 @@ dcc07ead5f1f459defe8191afd4abd56 *R/sp.R
 a9b2a939fb0c1a758465950a50dbe59a *R/tolima_data.R
 cb19f4a096ca24721b02900550f02e2a *R/zoning.R
 29a96c39d98aa1788d930697f9d8ffe6 *README.md
-24640e6710a60b372658be890ad78585 *build/partial.rdb
-7f90bb5ddfbbde80c14e95a637316f35 *build/vignette.rds
+3db390054e62654d3d4944d81bbbb263 *build/partial.rdb
+a0b8ec688f5ec700e69f0240cc811c8d *build/vignette.rds
 499ce69566e1a3383177c1036c1fddb1 *cleanup
 03dc316d9927313bde912681cd3eb209 *cleanup.win
 6a8068416ef9d167ebce7382f1ee9583 *data/conductivity_2014.rda
@@ -33,7 +33,7 @@ f130b604951d93663f99620a34d96e85 *data/tolima.rda
 bf5f62f20320ab92aba79f9d3fa2ea3e *inst/REFERENCES.bib
 34d5227fc445339585bff2acc4c346ef *inst/doc/data-fusion.R
 7897b675bfe1887ab18d0dfa216c558d *inst/doc/data-fusion.Rmd
-2a20e9fc22d36c3ae684bf88788d8f47 *inst/doc/data-fusion.html
+eec7d3230da16c2fe70f1c7d0061fbeb *inst/doc/data-fusion.html
 68904264bb7f60e703a5113cd2978515 *inst/doc/zoning.html
 9f015bd16c2c16cc3968ff8c6c97fbec *inst/doc/zoning.html.asis
 da3a028832c42c77f2b68cc980aa6ef4 *man/AggregFis.Rd
@@ -577,7 +577,7 @@ c8796d0ddf11193025a59d23543442d8 *src/CGAL/Triangulation_ds_vertex_base_2.h
 46c7d0aee7a2a4a2563be980cb65879f *src/CGAL/Triangulation_utils_2.h
 46edd1f2dfb72b515db1b823b433257c *src/CGAL/Triangulation_vertex_base_2.h
 423ffc55e28e1fbcf3edb4ffe88ad075 *src/CGAL/Triangulation_vertex_base_with_info_2.h
-393c8212a1b2de009e1ad103c986678c *src/CGAL/Uncertain.h
+4ae96bda32576b12045426537405eba9 *src/CGAL/Uncertain.h
 8719a97681d94a7659f1b97803a44773 *src/CGAL/Union_find.h
 fd0014676d78208147afa1439b0eaf6d *src/CGAL/Unique_hash_map.h
 582c16f1dfe38fc644defcb2d4ebcccf *src/CGAL/Vector_2.h
@@ -733,7 +733,7 @@ b79412dd07349a3aff43366fa72a665b *src/CGAL/value_type_traits.h
 209be9f5d845f9ef799b08aeaa16eb4d *src/CGAL/version.h
 67f16c70b5753f51401b837c7583cd57 *src/CGAL/version_macros.h
 b05733b50ec6c2a859f1d0c82b390fb5 *src/CGAL/wmult.h
-a0eb01703794e1568488392368f798eb *src/Makevars
+a4c3341b4ca14740ef0552ff4bc6c4c0 *src/Makevars
 5a185bf6fb7ea190488d33c2eedab19f *src/RcppExports.cpp
 bedadbc0611cd4b668c048db878cd407 *src/boost/variant/is_variant.hpp
 4985c57c446788f06b5132aa57f325f0 *src/geofis/algorithm/feature/feature_normalization.hpp
@@ -880,14 +880,14 @@ bf6528cd4e2d4edbe2cceca472cbd029 *src/geofis/rcpp/process/zoning/map.hpp
 cd183073badee25d68b29fcf23ffbb39 *src/geofis/rcpp/process/zoning/neighborhood/neighborhood_map.hpp
 fb9d667f8a4f8a3cfdafdc1ef62aebf0 *src/geofis/rcpp/process/zoning/voronoi/voronoi_map.hpp
 0695f8a7ce6afdc3889d85dc740b6485 *src/rcpp/matrix_range.hpp
-8a5bcc4fd12de4d711d8ab5bc53471bd *src/rcpp/vector_equal_to.hpp
+a21eae6908e6170923d7a1b369f0a85c *src/rcpp/vector_equal_to.hpp
 2cca2b9e0a32977373328578cc058a26 *src/rcpp/vector_range.hpp
 92add99dc1ebd6fe8ff7ab605cb34c20 *src/util/address.hpp
-ac85507f8f198e51212ce1443211db84 *src/util/address_equal.hpp
+a4a5096942485d6dcf8446127d5ecd79 *src/util/address_equal.hpp
 9afc165e401406a8638f135e088ec751 *src/util/algorithm/normalization.hpp
 59a024eb3827bf2afc7863a3b925895b *src/util/assert.hpp
 93dab54fe92695030cb1d321a1d31ff6 *src/util/dont_care.hpp
-bb8005a888d380c7306477c2666c0fdc *src/util/double.h
+4dda68c9e2f95370bd1b6c484f3f84e6 *src/util/double.h
 440eafb0bcd469edeeca8a06e593bf97 *src/util/double/boost_double_comparison.cpp
 22d7c4ab9e7a6af448e903bb5f389752 *src/util/double/boost_double_comparison.h
 17353ba7200590af3c5a4d9ccbbf18d4 *src/util/double/double.cpp
