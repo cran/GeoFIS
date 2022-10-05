@@ -62,21 +62,21 @@ The default value is \link{ZoneSize} with 1 point}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Zoning$new()}}
-\item \href{#method-zonable_data}{\code{Zoning$zonable_data()}}
-\item \href{#method-perform_voronoi}{\code{Zoning$perform_voronoi()}}
-\item \href{#method-voronoi_map}{\code{Zoning$voronoi_map()}}
-\item \href{#method-perform_neighborhood}{\code{Zoning$perform_neighborhood()}}
-\item \href{#method-neighborhood_map}{\code{Zoning$neighborhood_map()}}
-\item \href{#method-perform_zoning}{\code{Zoning$perform_zoning()}}
-\item \href{#method-map_size}{\code{Zoning$map_size()}}
-\item \href{#method-map}{\code{Zoning$map()}}
-\item \href{#method-maps}{\code{Zoning$maps()}}
+\item \href{#method-Zoning-new}{\code{Zoning$new()}}
+\item \href{#method-Zoning-zonable_data}{\code{Zoning$zonable_data()}}
+\item \href{#method-Zoning-perform_voronoi}{\code{Zoning$perform_voronoi()}}
+\item \href{#method-Zoning-voronoi_map}{\code{Zoning$voronoi_map()}}
+\item \href{#method-Zoning-perform_neighborhood}{\code{Zoning$perform_neighborhood()}}
+\item \href{#method-Zoning-neighborhood_map}{\code{Zoning$neighborhood_map()}}
+\item \href{#method-Zoning-perform_zoning}{\code{Zoning$perform_zoning()}}
+\item \href{#method-Zoning-map_size}{\code{Zoning$map_size()}}
+\item \href{#method-Zoning-map}{\code{Zoning$map()}}
+\item \href{#method-Zoning-maps}{\code{Zoning$maps()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Zoning-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-new}{}}}
 \subsection{Method \code{new()}}{
 Constructor, create a new instance of \link{Zoning}
 \subsection{Usage}{
@@ -94,8 +94,8 @@ Constructor, create a new instance of \link{Zoning}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-zonable_data"></a>}}
-\if{latex}{\out{\hypertarget{method-zonable_data}{}}}
+\if{html}{\out{<a id="method-Zoning-zonable_data"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-zonable_data}{}}}
 \subsection{Method \code{zonable_data()}}{
 Get the zonable data\cr
 Keep only the attributes that can be used in the zoning process, meaning numeric atributes, without missing values and with a range that is not limited to a unique value\cr
@@ -109,8 +109,8 @@ The last condition is required by the min-max standardization process
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-perform_voronoi"></a>}}
-\if{latex}{\out{\hypertarget{method-perform_voronoi}{}}}
+\if{html}{\out{<a id="method-Zoning-perform_voronoi"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-perform_voronoi}{}}}
 \subsection{Method \code{perform_voronoi()}}{
 Compute the Voronoi diagram
 \subsection{Usage}{
@@ -119,8 +119,8 @@ Compute the Voronoi diagram
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-voronoi_map"></a>}}
-\if{latex}{\out{\hypertarget{method-voronoi_map}{}}}
+\if{html}{\out{<a id="method-Zoning-voronoi_map"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-voronoi_map}{}}}
 \subsection{Method \code{voronoi_map()}}{
 Get the Voronoi map
 \subsection{Usage}{
@@ -132,8 +132,8 @@ Get the Voronoi map
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-perform_neighborhood"></a>}}
-\if{latex}{\out{\hypertarget{method-perform_neighborhood}{}}}
+\if{html}{\out{<a id="method-Zoning-perform_neighborhood"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-perform_neighborhood}{}}}
 \subsection{Method \code{perform_neighborhood()}}{
 Identify adjacent polygons in the voronoi tesselation
 \subsection{Usage}{
@@ -142,8 +142,8 @@ Identify adjacent polygons in the voronoi tesselation
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-neighborhood_map"></a>}}
-\if{latex}{\out{\hypertarget{method-neighborhood_map}{}}}
+\if{html}{\out{<a id="method-Zoning-neighborhood_map"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-neighborhood_map}{}}}
 \subsection{Method \code{neighborhood_map()}}{
 Get the neighborhood map
 \subsection{Usage}{
@@ -155,8 +155,8 @@ Get the neighborhood map
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-perform_zoning"></a>}}
-\if{latex}{\out{\hypertarget{method-perform_zoning}{}}}
+\if{html}{\out{<a id="method-Zoning-perform_zoning"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-perform_zoning}{}}}
 \subsection{Method \code{perform_zoning()}}{
 Perform the zoning
 \subsection{Usage}{
@@ -165,8 +165,8 @@ Perform the zoning
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-map_size"></a>}}
-\if{latex}{\out{\hypertarget{method-map_size}{}}}
+\if{html}{\out{<a id="method-Zoning-map_size"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-map_size}{}}}
 \subsection{Method \code{map_size()}}{
 Get the number of maps with different number of zones available after perform zoning
 \subsection{Usage}{
@@ -178,8 +178,8 @@ Get the number of maps with different number of zones available after perform zo
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-map"></a>}}
-\if{latex}{\out{\hypertarget{method-map}{}}}
+\if{html}{\out{<a id="method-Zoning-map"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-map}{}}}
 \subsection{Method \code{map()}}{
 Get the map corresponding to a number of zones
 \subsection{Usage}{
@@ -198,8 +198,8 @@ Get the map corresponding to a number of zones
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-maps"></a>}}
-\if{latex}{\out{\hypertarget{method-maps}{}}}
+\if{html}{\out{<a id="method-Zoning-maps"></a>}}
+\if{latex}{\out{\hypertarget{method-Zoning-maps}{}}}
 \subsection{Method \code{maps()}}{
 Get the maps corresponding to a number of zones
 \subsection{Usage}{

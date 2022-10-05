@@ -25,12 +25,12 @@ Defines the allowed labels for the \link{Mf}s of the fuzzy inputs or output in t
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-get_labels}{\code{FusionLabel$get_labels()}}
+\item \href{#method-FusionLabel-get_labels}{\code{FusionLabel$get_labels()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_labels"></a>}}
-\if{latex}{\out{\hypertarget{method-get_labels}{}}}
+\if{html}{\out{<a id="method-FusionLabel-get_labels"></a>}}
+\if{latex}{\out{\hypertarget{method-FusionLabel-get_labels}{}}}
 \subsection{Method \code{get_labels()}}{
 Get the allowed labels depending on the granularity in the \link{Fis}\cr
 for granularity 2, allowed labels are: [low, high]\cr

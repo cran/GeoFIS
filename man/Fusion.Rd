@@ -51,14 +51,14 @@ print(score)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Fusion$new()}}
-\item \href{#method-perform}{\code{Fusion$perform()}}
-\item \href{#method-output}{\code{Fusion$output()}}
+\item \href{#method-Fusion-new}{\code{Fusion$new()}}
+\item \href{#method-Fusion-perform}{\code{Fusion$perform()}}
+\item \href{#method-Fusion-output}{\code{Fusion$output()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Fusion-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Fusion-new}{}}}
 \subsection{Method \code{new()}}{
 The constructor to build an object of class \link{Fusion}.
 \subsection{Usage}{
@@ -75,8 +75,8 @@ Keep only numeric attributes}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-perform"></a>}}
-\if{latex}{\out{\hypertarget{method-perform}{}}}
+\if{html}{\out{<a id="method-Fusion-perform"></a>}}
+\if{latex}{\out{\hypertarget{method-Fusion-perform}{}}}
 \subsection{Method \code{perform()}}{
 Perform the data fusion
 \subsection{Usage}{
@@ -85,8 +85,8 @@ Perform the data fusion
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-output"></a>}}
-\if{latex}{\out{\hypertarget{method-output}{}}}
+\if{html}{\out{<a id="method-Fusion-output"></a>}}
+\if{latex}{\out{\hypertarget{method-Fusion-output}{}}}
 \subsection{Method \code{output()}}{
 Get the output aggregated data (same object type as data source)
 \subsection{Usage}{

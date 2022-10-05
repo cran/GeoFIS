@@ -1,6 +1,6 @@
-1d2dc9cd34ba84d6f9ab7843d25b11fb *DESCRIPTION
+a429825b1fcea6c6f859f2777780fb8e *DESCRIPTION
 5d3e8e44c343384c3e2122017e568ebc *NAMESPACE
-37c002e1a7a73018c64ea5e32c79c72b *NEWS.md
+11c89c402e90076009a472961f71db1a *NEWS.md
 207eb00901dc054d74fcc65b50d2a6d9 *R/aggreg.R
 35fe034c030d1592dd374411c73de7f1 *R/aggreg_fis.R
 559a766f4f75a54141b0bf735bd0500d *R/aggreg_function.R
@@ -22,8 +22,8 @@ dcc07ead5f1f459defe8191afd4abd56 *R/sp.R
 a9b2a939fb0c1a758465950a50dbe59a *R/tolima_data.R
 cb19f4a096ca24721b02900550f02e2a *R/zoning.R
 29a96c39d98aa1788d930697f9d8ffe6 *README.md
-3db390054e62654d3d4944d81bbbb263 *build/partial.rdb
-a0b8ec688f5ec700e69f0240cc811c8d *build/vignette.rds
+5dacc44220c0b90aa834e6c763b7c94b *build/partial.rdb
+9d03619e372f0a036bb3a205f88b6253 *build/vignette.rds
 499ce69566e1a3383177c1036c1fddb1 *cleanup
 03dc316d9927313bde912681cd3eb209 *cleanup.win
 6a8068416ef9d167ebce7382f1ee9583 *data/conductivity_2014.rda
@@ -33,7 +33,7 @@ f130b604951d93663f99620a34d96e85 *data/tolima.rda
 bf5f62f20320ab92aba79f9d3fa2ea3e *inst/REFERENCES.bib
 34d5227fc445339585bff2acc4c346ef *inst/doc/data-fusion.R
 7897b675bfe1887ab18d0dfa216c558d *inst/doc/data-fusion.Rmd
-eec7d3230da16c2fe70f1c7d0061fbeb *inst/doc/data-fusion.html
+af98b69a11aa40f3187afd31c92b5662 *inst/doc/data-fusion.html
 68904264bb7f60e703a5113cd2978515 *inst/doc/zoning.html
 9f015bd16c2c16cc3968ff8c6c97fbec *inst/doc/zoning.html.asis
 da3a028832c42c77f2b68cc980aa6ef4 *man/AggregFis.Rd
@@ -41,8 +41,8 @@ da3a028832c42c77f2b68cc980aa6ef4 *man/AggregFis.Rd
 1885e3a0c28b24265b842cea3aa4eefa *man/AggregOwa.Rd
 e4e6dd52a96531ee725fb124b8500f1a *man/AggregWam.Rd
 28c583a3a8d1263e7ee7057fe12fdd50 *man/EuclideanDistance.Rd
-5a99cc34b9fb31ab672fdd111c4647bf *man/Fusion.Rd
-2e237dc46c25849ad41589f87aee48df *man/FusionLabel.Rd
+f7fccc3f6b9d510ceba7d4a414b292f8 *man/Fusion.Rd
+cdd53f6dd2ef00ad0fc9a057f30db36e *man/FusionLabel.Rd
 dc91972d36d3f0d29de27217405d01d3 *man/FuzzyDistance.Rd
 5dbea21b0e99efc3109de2151032c5f8 *man/GeoFIS.Rd
 089be488aeb6cb414c99d30a168c7252 *man/LearnOwaWeights.Rd
@@ -62,7 +62,7 @@ fe88e3754ffd7a8b3f701d67a96593ce *man/NewFusionInput.Rd
 71943102260186be48890097c0713bb5 *man/NewZoning.Rd
 d1af652c0eaf990f64fc2424325a2aa1 *man/ZoneArea.Rd
 f468b958a8978ac17bfe2c8d41923e83 *man/ZoneSize.Rd
-f46eda23e1df354a575de9dbfef888b8 *man/Zoning.Rd
+a93c304849d67ebc616776a8e39bf8ea *man/Zoning.Rd
 e4f59bfe2efd8cbd628cd81c281a1a60 *man/conductivity_2014.Rd
 64567d011b59028d1bf437aa6d23fa48 *man/conductivity_border.Rd
 f78ad5cc5674bffcba4bc28184ce8b48 *man/fusion_cars.Rd
@@ -733,7 +733,7 @@ b79412dd07349a3aff43366fa72a665b *src/CGAL/value_type_traits.h
 209be9f5d845f9ef799b08aeaa16eb4d *src/CGAL/version.h
 67f16c70b5753f51401b837c7583cd57 *src/CGAL/version_macros.h
 b05733b50ec6c2a859f1d0c82b390fb5 *src/CGAL/wmult.h
-a4c3341b4ca14740ef0552ff4bc6c4c0 *src/Makevars
+aedf97ad5ba9fce8f0328552a9e38580 *src/Makevars
 5a185bf6fb7ea190488d33c2eedab19f *src/RcppExports.cpp
 bedadbc0611cd4b668c048db878cd407 *src/boost/variant/is_variant.hpp
 4985c57c446788f06b5132aa57f325f0 *src/geofis/algorithm/feature/feature_normalization.hpp

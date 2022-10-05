@@ -1,8 +1,12 @@
-# FisPro 1.0.3
+# GeoFIS 1.0.4
+
+* Fix compilation errors of deprecated C++ functions
+
+# GeoFIS 1.0.3
 
 * Fix compilation warnings
 
-# FisPro 1.0.2
+# GeoFIS 1.0.2
 
 * Fix vignettes build errors
 
