@@ -5,7 +5,7 @@
 \alias{conductivity_border}
 \title{Border dataset}
 \format{
-\link{SpatialPolygonsDataFrame} object with 1 polygon delimiting the border of the vine plot:
+\link[sp:SpatialPolygons]{sp::SpatialPolygonsDataFrame} object with 1 polygon delimiting the border of the vine plot:
 \describe{
 \item{\code{id}}{\link{integer} value, The id of the polygon}
 }

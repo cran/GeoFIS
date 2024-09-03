@@ -5,7 +5,7 @@
 \alias{conductivity_2014}
 \title{Soil conductivity 2014 dataset}
 \format{
-\link{SpatialPointsDataFrame} object with 353 observations and 1 attribute:
+\link[sp:SpatialPoints]{sp::SpatialPointsDataFrame} object with 353 observations and 1 attribute:
 \describe{
 \item{\code{conduct}}{\link{numeric} value, The soil conductivity}
 }

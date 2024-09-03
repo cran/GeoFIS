@@ -8,7 +8,7 @@
 FuzzyDistance(fisin)
 }
 \arguments{
-\item{fisin}{\link{FisIn} object, The partition used for the fuzzy distance (must be a standardized fuzzy partition)}
+\item{fisin}{\link[FisPro:FisIn]{FisPro::FisIn} object, The partition used for the fuzzy distance (must be a standardized fuzzy partition)}
 }
 \value{
 Fuzzy distance object

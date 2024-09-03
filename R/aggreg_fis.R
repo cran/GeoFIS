@@ -44,7 +44,7 @@
 #' @docType class
 #' @description The Fis aggregation operator to be used in [Fusion]
 #'
-#' @slot fis [Fis] object, The Fis to be used in the aggregation operator
+#' @slot fis [FisPro::Fis] object, The Fis to be used in the aggregation operator
 #' @slot output_index [integer] value, The index (1-based index) of the output in the Fis to be used in the aggregation
 #'
 #' @importFrom utils packageVersion
@@ -128,7 +128,7 @@ setMethod("initialize", "AggregFis", function(.Object, ...) {
 #' @name NewAggregFis
 #' @description Function to create an aggregation operator of class [AggregFis] to be used in [Fusion]
 #'
-#' @param fis [Fis] object, The Fis to be used in the aggregation operator
+#' @param fis [FisPro::Fis] object, The Fis to be used in the aggregation operator
 #' @param output_index [integer] value, The index (1-based index) of the output in the Fis to be used in the aggregation (the default is 1)
 #'
 #' @return [AggregFis] object
@@ -151,6 +151,7 @@ setMethod(f = "Aggreg", signature = "AggregFis", definition = function(object, n
   return(Aggregate(node, attribute, aggFun = function(x) object@fis$infer_output(x, object@output_index)))
 })
 
+#' @export
 toString.AggregFis <- function(x, ...) {
   return(sprintf("fis(\"%s\", %d)", x@fis$name, x@output_index))
 }

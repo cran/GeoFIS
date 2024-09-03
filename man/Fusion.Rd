@@ -44,7 +44,7 @@ print(score)
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{aggregate}}{\link{Node} object, or a \link{list} of \link{Node}, The node(s) to aggregate}
+\item{\code{aggregate}}{\link[data.tree:Node]{data.tree::Node} object, or a \link{list} of \link[data.tree:Node]{data.tree::Node}, The node(s) to aggregate}
 }
 \if{html}{\out{</div>}}
 }
@@ -68,7 +68,7 @@ The constructor to build an object of class \link{Fusion}.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{source}}{\link{data.frame} or \link{Spatial}*DataFrame object of \link{sp} package\cr
+\item{\code{source}}{\link{data.frame} or \link[sp:Spatial-class]{sp::Spatial}*DataFrame object of \link[sp:00sp]{sp::sp} package\cr
 Keep only numeric attributes}
 }
 \if{html}{\out{</div>}}
@@ -94,7 +94,7 @@ Get the output aggregated data (same object type as data source)
 }
 
 \subsection{Returns}{
-\link{data.frame} or \link{Spatial}*DataFrame object
+\link{data.frame} or \link[sp:Spatial-class]{sp::Spatial}*DataFrame object
 }
 }
 }

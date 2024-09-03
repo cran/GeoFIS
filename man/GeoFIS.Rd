@@ -2,8 +2,8 @@
 % Please edit documentation in R/package.R
 \docType{package}
 \name{GeoFIS}
-\alias{GeoFIS}
 \alias{GeoFIS-package}
+\alias{GeoFIS}
 \title{GeoFIS package}
 \description{
 \href{https://www.geofis.org}{GeoFIS} is an open source software that provides methods for processing spatial data for decision making through a user-friendly interface \insertCite{agriculture8060073}{GeoFIS}.\cr
@@ -33,3 +33,4 @@ All the mentioned publications are available from the \href{https://www.geofis.o
 \author{
 GeoFIS Team \email{contact@geofis.org}
 }
+\keyword{internal}

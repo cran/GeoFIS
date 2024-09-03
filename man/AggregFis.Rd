@@ -10,7 +10,7 @@ The Fis aggregation operator to be used in \link{Fusion}
 \section{Slots}{
 
 \describe{
-\item{\code{fis}}{\link{Fis} object, The Fis to be used in the aggregation operator}
+\item{\code{fis}}{\link[FisPro:Fis]{FisPro::Fis} object, The Fis to be used in the aggregation operator}
 
 \item{\code{output_index}}{\link{integer} value, The index (1-based index) of the output in the Fis to be used in the aggregation}
 }}

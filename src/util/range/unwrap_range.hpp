@@ -45,6 +45,12 @@
 #include <boost/range.hpp>
 #include <boost/range/adaptor/transformed.hpp>
 
+#if BOOST_VERSION >= 108200
+	#define UNWRAP_REF_BOOST_NOEXCEPT BOOST_NOEXCEPT
+#else
+	#define UNWRAP_REF_BOOST_NOEXCEPT
+#endif
+
 namespace util {
 
 template <class Range> struct unwrap_range_traits {
@@ -52,7 +58,7 @@ template <class Range> struct unwrap_range_traits {
 	typedef typename boost::range_value<Range>::type range_value_type;
 	typedef typename boost::range_reference<Range>::type range_reference_type;
 	typedef typename boost::unwrap_reference<range_value_type>::type unwrap_reference_type;
-	typedef boost::transformed_range<unwrap_reference_type &(*)(range_reference_type), Range> unwrap_range_type;
+	typedef boost::transformed_range<unwrap_reference_type &(*)(range_reference_type) UNWRAP_REF_BOOST_NOEXCEPT, Range> unwrap_range_type;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

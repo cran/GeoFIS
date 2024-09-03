@@ -25,15 +25,15 @@ NewFisFusion(
 \item{output_conclusions}{\link{numeric} or \link{character} vector, The conclusions of the rules in the Fis\cr
 the rules are generated according to the granularity of each input, in the lexicographic order of inputs Mfs\cr
 (\code{prod(input_granularities)} rules are generated)\cr
-if \link{numeric} vector, a crisp output \link{FisOutCrisp} will be added to the Fis (all output conclusions must be be in range [0, 1])\cr
-if \link{character} vector, a fuzzy output \link{FisOutFuzzy} will be added to the Fis, the output_conclusions contains the labels of Mfs in the fuzzy output (labels defined on \link{FusionLabel})\cr
+if \link{numeric} vector, a crisp output \link[FisPro:FisOutCrisp]{FisPro::FisOutCrisp} will be added to the Fis (all output conclusions must be be in range [0, 1])\cr
+if \link{character} vector, a fuzzy output \link[FisPro:FisOutFuzzy]{FisPro::FisOutFuzzy} will be added to the Fis, the output_conclusions contains the labels of Mfs in the fuzzy output (labels defined on \link{FusionLabel})\cr
 the length of output_conclusions must be equal to the number of generated rules.}
 }
 \value{
-\link{Fis} object
+\link[FisPro:Fis]{FisPro::Fis} object
 }
 \description{
-Function to create object of class \link{Fis} to be used in \link{AggregFis}
+Function to create object of class \link[FisPro:Fis]{FisPro::Fis} to be used in \link{AggregFis}
 }
 \seealso{
 \href{https://www.geofis.org/en/documentation-en/data-fusion/#linguistic-rules}{Aggregation using linguistic rules}

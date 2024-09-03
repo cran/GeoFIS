@@ -49,7 +49,7 @@
 #'
 #' @usage data(conductivity_2014)
 #'
-#' @format [SpatialPointsDataFrame] object with 353 observations and 1 attribute:
+#' @format [sp::SpatialPointsDataFrame] object with 353 observations and 1 attribute:
 #' \describe{
 #'   \item{`conduct`}{[numeric] value, The soil conductivity}
 #' }
@@ -65,7 +65,7 @@
 #'
 #' @usage data(conductivity_border)
 #'
-#' @format [SpatialPolygonsDataFrame] object with 1 polygon delimiting the border of the vine plot:
+#' @format [sp::SpatialPolygonsDataFrame] object with 1 polygon delimiting the border of the vine plot:
 #' \describe{
 #'   \item{`id`}{[integer] value, The id of the polygon}
 #' }

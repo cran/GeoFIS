@@ -155,7 +155,7 @@ setMethod(f = ".MakeRules", signature = c("numeric", "character"), definition = 
 #' @title Create object of class "Fis" to be used in data fusion
 #' @name NewFisFusion
 #' @docType methods
-#' @description Function to create object of class [Fis] to be used in [AggregFis]
+#' @description Function to create object of class [FisPro::Fis] to be used in [AggregFis]
 #'
 #' @param fis_name [character] vector, The name of the Fis
 #' @param input_names [character] vector, The Fis inputs names
@@ -164,10 +164,10 @@ setMethod(f = ".MakeRules", signature = c("numeric", "character"), definition = 
 #' @param output_conclusions [numeric] or [character] vector, The conclusions of the rules in the Fis\cr
 #' the rules are generated according to the granularity of each input, in the lexicographic order of inputs Mfs\cr
 #' (`prod(input_granularities)` rules are generated)\cr
-#' if [numeric] vector, a crisp output [FisOutCrisp] will be added to the Fis (all output conclusions must be be in range \[0, 1\])\cr
-#' if [character] vector, a fuzzy output [FisOutFuzzy] will be added to the Fis, the output_conclusions contains the labels of Mfs in the fuzzy output (labels defined on [FusionLabel])\cr
+#' if [numeric] vector, a crisp output [FisPro::FisOutCrisp] will be added to the Fis (all output conclusions must be be in range \[0, 1\])\cr
+#' if [character] vector, a fuzzy output [FisPro::FisOutFuzzy] will be added to the Fis, the output_conclusions contains the labels of Mfs in the fuzzy output (labels defined on [FusionLabel])\cr
 #' the length of output_conclusions must be equal to the number of generated rules.
-#' @return [Fis] object
+#' @return [FisPro::Fis] object
 #'
 #' @seealso [Aggregation using linguistic rules](https://www.geofis.org/en/documentation-en/data-fusion/#linguistic-rules)
 #'

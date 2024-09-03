@@ -89,7 +89,7 @@ Fusion <- R6Class("Fusion",
     .output = NULL
   ),
   active = list(
-    #' @field aggregate [Node] object, or a [list] of [Node], The node(s) to aggregate
+    #' @field aggregate [data.tree::Node] object, or a [list] of [data.tree::Node], The node(s) to aggregate
     aggregate = function(aggregate) {
       if (missing(aggregate)) {
         return(private$.aggregate)
@@ -105,7 +105,7 @@ Fusion <- R6Class("Fusion",
   ),
   public = list(
     #' @description The constructor to build an object of class [Fusion].
-    #' @param source [data.frame] or [Spatial]*DataFrame object of [sp] package\cr
+    #' @param source [data.frame] or [sp::Spatial]*DataFrame object of [sp::sp] package\cr
     #' Keep only numeric attributes
     initialize = function(source) {
       if (missing(source) || (!is.data.frame(source) && !.is_spatial_data_frame(source))) stop("the source dataset must be a 'data.frame' or 'Spatial*DataFrame' object")
@@ -119,7 +119,7 @@ Fusion <- R6Class("Fusion",
 
 
     #' @description Get the output aggregated data (same object type as data source)
-    #' @return [data.frame] or [Spatial]*DataFrame object
+    #' @return [data.frame] or [sp::Spatial]*DataFrame object
     output = function() {
       return(private$.output)
     }
@@ -147,9 +147,9 @@ NewFusion <- function(...) {
 #' @importFrom data.tree SetFormat
 #'
 #' @param name [character] vector, The name of the node
-#' @param mf [Mf] object, The membership function to be used to compute the satisfaction degree of the input
+#' @param mf [FisPro::Mf] object, The membership function to be used to compute the satisfaction degree of the input
 #' @param attribute [character] vector, The attribute name in the source dataset (default is the same as name)
-#' @return [Node] object
+#' @return [data.tree::Node] object
 #'
 #' @seealso [From raw data to satisfaction degrees](https://www.geofis.org/en/documentation-en/data-fusion/#satisfaction-degrees)
 #'
@@ -172,9 +172,9 @@ NewFusionInput <- function(name, mf, attribute = name) {
 #' @param name [character] vector, The name of the node
 #' @param aggreg Aggreg object, The aggregation operator to be used to compute the aggregation of satisfaction degrees\cr
 #' must be an [AggregWam], [AggregOwa], [AggregFis] or [AggregFunction] object
-#' @param ... [Node] objects, The nodes to aggregate\cr
+#' @param ... [data.tree::Node] objects, The nodes to aggregate\cr
 #' can be an input node built with [NewFusionInput] or an aggregate node built with [NewFusionAggreg] for a hierarchical aggregation structure
-#' @return [Node] object
+#' @return [data.tree::Node] object
 #'
 #' @seealso [Aggregation of the degrees](https://www.geofis.org/en/documentation-en/data-fusion/#aggregation)
 #'

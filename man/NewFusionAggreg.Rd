@@ -13,11 +13,11 @@ NewFusionAggreg(name, aggreg, ...)
 \item{aggreg}{Aggreg object, The aggregation operator to be used to compute the aggregation of satisfaction degrees\cr
 must be an \link{AggregWam}, \link{AggregOwa}, \link{AggregFis} or \link{AggregFunction} object}
 
-\item{...}{\link{Node} objects, The nodes to aggregate\cr
+\item{...}{\link[data.tree:Node]{data.tree::Node} objects, The nodes to aggregate\cr
 can be an input node built with \link{NewFusionInput} or an aggregate node built with \link{NewFusionAggreg} for a hierarchical aggregation structure}
 }
 \value{
-\link{Node} object
+\link[data.tree:Node]{data.tree::Node} object
 }
 \description{
 Function to create an aggregation node to be used in \link{Fusion}

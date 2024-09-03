@@ -1,4 +1,3 @@
-
 expect_no_error <- function(expr) {
   err <- FALSE
   message <- NULL

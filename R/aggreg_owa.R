@@ -89,6 +89,7 @@ setMethod(f = "Aggreg", signature = "AggregOwa", definition = function(object, n
   return(Aggregate(node, attribute, aggFun = function(x) .ComputeOwa(x, object@weights)))
 })
 
+#' @export
 toString.AggregOwa <- function(x, ...) {
   return(sprintf("owa(%s)", paste(x@weights, collapse = ", ")))
 }

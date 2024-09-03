@@ -5,7 +5,7 @@
 \alias{FusionLabel}
 \title{Class "FusionLabel"}
 \description{
-Defines the allowed labels for the \link{Mf}s of the fuzzy inputs or output in the \link{Fis} "Fusion"
+Defines the allowed labels for the \link[FisPro:Mf]{FisPro::Mf}s of the fuzzy inputs or output in the \link[FisPro:Fis]{FisPro::Fis} "Fusion"
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -32,7 +32,7 @@ Defines the allowed labels for the \link{Mf}s of the fuzzy inputs or output in t
 \if{html}{\out{<a id="method-FusionLabel-get_labels"></a>}}
 \if{latex}{\out{\hypertarget{method-FusionLabel-get_labels}{}}}
 \subsection{Method \code{get_labels()}}{
-Get the allowed labels depending on the granularity in the \link{Fis}\cr
+Get the allowed labels depending on the granularity in the \link[FisPro:Fis]{FisPro::Fis}\cr
 for granularity 2, allowed labels are: [low, high]\cr
 for granularity 3, allowed labels are: [low, average, high]\cr
 for granularity 4, allowed labels are: [very_low, low, high, very_high]\cr
@@ -44,7 +44,7 @@ for granularity 5, allowed labels are: [very_low, low, average, high, very_high]
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{granularity}}{\link{integer} value, The granularity of the fuzzy inputs or output in the \link{Fis} (value in range [2, 5])}
+\item{\code{granularity}}{\link{integer} value, The granularity of the fuzzy inputs or output in the \link[FisPro:Fis]{FisPro::Fis} (value in range [2, 5])}
 }
 \if{html}{\out{</div>}}
 }

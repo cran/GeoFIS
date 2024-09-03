@@ -1,4 +1,3 @@
-
 #' see code of method 'identicalCRS1' in sp package CRS-methods.R
 .identicalCRS1 <- function(x, y) {
   args_x <- strsplit(x@projargs, " +")[[1]]

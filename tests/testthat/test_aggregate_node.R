@@ -1,6 +1,6 @@
 context("AggregateNode")
 
-library(rgeos)
+library(sf)
 
 leaf1 <- NewFusionInput("l1", NewMfTrapezoidalInf(0, 4), "a1")
 leaf2 <- NewFusionInput("l2", NewMfTrapezoidalSup(0, 4), "a1")
@@ -11,34 +11,34 @@ aggregate1 <- NewFusionAggreg("ag1", NewAggregOwa(c(1, 0)), leaf1, leaf3)
 aggregate2 <- NewFusionAggreg("ag2", NewAggregWam(c(1, 0)), leaf2, leaf4)
 aggregate3 <- NewFusionAggreg("ag3", NewAggregWam(c(0.5, 0.5)), aggregate1, aggregate2)
 
-get_spatial <- function(wkt) {
-  spatial <- readWKT(wkt)
-  proj4string(spatial) <- CRS("+init=epsg:4326")
-  return(spatial)
-}
+aggregate_crs <- CRS("epsg:4326")
 
 get_points <- function() {
-  return(get_spatial("GEOMETRYCOLLECTION(
+  return(get_spatial_points(
+    "GEOMETRYCOLLECTION(
     POINT(0 0), POINT(0 1),
     POINT(1 0), POINT(1 1),
     POINT(2 0), POINT(2 1),
-    POINT(3 0), POINT(3 1))"))
+    POINT(3 0), POINT(3 1))",
+    aggregate_crs
+  ))
 }
 
 get_multi_points <- function() {
-  points1 <- get_spatial("MULTIPOINT((0 0), (0 1))")
-  points2 <- get_spatial("MULTIPOINT((1 0), (1 1))")
-  points3 <- get_spatial("MULTIPOINT((2 0), (2 1))")
-  points4 <- get_spatial("MULTIPOINT((3 0), (3 1))")
-  points5 <- get_spatial("MULTIPOINT((4 0), (4 1))")
-  points6 <- get_spatial("MULTIPOINT((5 0), (5 1))")
-  points7 <- get_spatial("MULTIPOINT((6 0), (6 1))")
-  points8 <- get_spatial("MULTIPOINT((7 0), (7 1))")
+  points1 <- get_spatial("MULTIPOINT((0 0), (0 1))", aggregate_crs)
+  points2 <- get_spatial("MULTIPOINT((1 0), (1 1))", aggregate_crs)
+  points3 <- get_spatial("MULTIPOINT((2 0), (2 1))", aggregate_crs)
+  points4 <- get_spatial("MULTIPOINT((3 0), (3 1))", aggregate_crs)
+  points5 <- get_spatial("MULTIPOINT((4 0), (4 1))", aggregate_crs)
+  points6 <- get_spatial("MULTIPOINT((5 0), (5 1))", aggregate_crs)
+  points7 <- get_spatial("MULTIPOINT((6 0), (6 1))", aggregate_crs)
+  points8 <- get_spatial("MULTIPOINT((7 0), (7 1))", aggregate_crs)
   return(SpatialMultiPoints(coords = list(points1, points2, points3, points4, points5, points6, points7, points8), proj4string = rebuild_CRS(points1@proj4string)))
 }
 
 get_polygons <- function() {
-  return(get_spatial("GEOMETRYCOLLECTION(
+  return(get_spatial_polygons(
+    "GEOMETRYCOLLECTION(
     POLYGON((0 0, 0 1, 1 1, 1 0, 0 0)),
     POLYGON((1 0, 1 1, 2 1, 2 0, 1 0)),
     POLYGON((2 0, 2 1, 3 1, 3 0, 2 0)),
@@ -46,11 +46,14 @@ get_polygons <- function() {
     POLYGON((4 0, 4 1, 5 1, 5 0, 4 0)),
     POLYGON((5 0, 5 1, 6 1, 6 0, 5 0)),
     POLYGON((6 0, 6 1, 7 1, 7 0, 6 0)),
-    POLYGON((7 0, 7 1, 8 1, 8 0, 7 0)))"))
+    POLYGON((7 0, 7 1, 8 1, 8 0, 7 0)))",
+    aggregate_crs
+  ))
 }
 
 get_lines <- function() {
-  return(get_spatial("GEOMETRYCOLLECTION(
+  return(get_spatial_lines(
+    "GEOMETRYCOLLECTION(
     LINESTRING(0 0, 0 1),
     LINESTRING(1 0, 1 1),
     LINESTRING(2 0, 2 1),
@@ -58,7 +61,9 @@ get_lines <- function() {
     LINESTRING(4 0, 4 1),
     LINESTRING(5 0, 5 1),
     LINESTRING(6 0, 6 1),
-    LINESTRING(7 0, 7 1))"))
+    LINESTRING(7 0, 7 1))",
+    aggregate_crs
+  ))
 }
 
 get_grid <- function() {
@@ -92,7 +97,7 @@ get_pixels_source <- function() {
 }
 
 get_grid_source <- function() {
-  return(SpatialGridDataFrame(get_grid(), data = get_data_frame_source(), proj4string = CRS("+init=epsg:4326")))
+  return(SpatialGridDataFrame(get_grid(), data = get_data_frame_source(), proj4string = CRS("epsg:4326")))
 }
 
 ###############################################################################
@@ -139,37 +144,37 @@ setMethod(f = "test_aggregate_node1", signature = "data.frame", definition = fun
 setMethod(f = "test_aggregate_node1", signature = "SpatialPointsDataFrame", definition = function(result) {
   test_points(result)
   test_aggregate_node1(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_node1", signature = "SpatialMultiPointsDataFrame", definition = function(result) {
   test_multi_points(result)
   test_aggregate_node1(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_node1", signature = "SpatialPolygonsDataFrame", definition = function(result) {
   test_polygons(result)
   test_aggregate_node1(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_node1", signature = "SpatialLinesDataFrame", definition = function(result) {
   test_lines(result)
   test_aggregate_node1(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_node1", signature = "SpatialPixelsDataFrame", definition = function(result) {
   test_points(result)
   test_aggregate_node1(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_node1", signature = "SpatialGridDataFrame", definition = function(result) {
   test_grid(result)
   test_aggregate_node1(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 test_aggregate_node2 <- function(result) {
@@ -196,37 +201,37 @@ setMethod(f = "test_aggregate_nodes", signature = "data.frame", definition = fun
 setMethod(f = "test_aggregate_nodes", signature = "SpatialPointsDataFrame", definition = function(result) {
   test_points(result)
   test_aggregate_nodes(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_nodes", signature = "SpatialMultiPointsDataFrame", definition = function(result) {
   test_multi_points(result)
   test_aggregate_nodes(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_nodes", signature = "SpatialPolygonsDataFrame", definition = function(result) {
   test_polygons(result)
   test_aggregate_nodes(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_nodes", signature = "SpatialLinesDataFrame", definition = function(result) {
   test_lines(result)
   test_aggregate_nodes(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_nodes", signature = "SpatialPixelsDataFrame", definition = function(result) {
   test_points(result)
   test_aggregate_nodes(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 setMethod(f = "test_aggregate_nodes", signature = "SpatialGridDataFrame", definition = function(result) {
   test_grid(result)
   test_aggregate_nodes(result@data)
-  expect_identical_crs(result, CRS("+init=epsg:4326"))
+  expect_identical_crs(result, CRS("epsg:4326"))
 })
 
 ###############################################################################

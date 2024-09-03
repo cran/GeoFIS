@@ -1,11 +1,11 @@
-## ---- include = FALSE-------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ----include = FALSE--------------------------------------------------------------------------------------------------------------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 options(width = 180)
 
-## ---- setup-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ----setup------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 library(GeoFIS)
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,26 +23,32 @@ ph <- NewFusionInput("pH", NewMfTrapezoidal(5, 5.5, 6.5, 7.5))
 cadmium <- NewFusionInput("Cd", NewMfTrapezoidalInf(0, 0.43), "Cadmium")
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-macronutrients_fis <- NewFisFusion("MacN", # Fis name
+macronutrients_fis <- NewFisFusion(
+  "MacN", # Fis name
   c("Bal_Gap", "K", "P", "N_Gap", "Base_Sat"), # Fis inputs names
   c(2, 2, 2, 2, 2), # Fis inputs granularities
   "MacN", # Fis output name
-  c(0, 0.1, 0.15, 0.2, 0.25, 0.35, 0.4, 0.45,
-    0.3, 0.4, 0.45, 0.5, 0.55, 0.65, 0.7, 0.75, 
-    0.4, 0.3, 0.4, 0.45, 0.5, 0.55, 0.65, 0.7, 
-    0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 1) # Fis conclusions
+  c(
+    0, 0.1, 0.15, 0.2, 0.25, 0.35, 0.4, 0.45,
+    0.3, 0.4, 0.45, 0.5, 0.55, 0.65, 0.7, 0.75,
+    0.4, 0.3, 0.4, 0.45, 0.5, 0.55, 0.65, 0.7,
+    0.55, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 1
+  ) # Fis conclusions
 )
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 print(macronutrients_fis)
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-macronutrients_aggreg <- NewFusionAggreg("MacN", 
-  NewAggregFis(macronutrients_fis), 
-  balance_gap, potassium, phosphorus, n_gap, base_sat)
+macronutrients_aggreg <- NewFusionAggreg(
+  "MacN",
+  NewAggregFis(macronutrients_fis),
+  balance_gap, potassium, phosphorus, n_gap, base_sat
+)
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-nutri_balance_fis <- NewFisFusion("Nutri_Bal", # Fis name 
+nutri_balance_fis <- NewFisFusion(
+  "Nutri_Bal", # Fis name
   c("pH", "OM", "MacN"), # Fis inputs names
   c(2, 2, 2), # Fis inputs granularities
   "Nutri_Bal", # Fis output name
@@ -53,14 +59,18 @@ nutri_balance_fis <- NewFisFusion("Nutri_Bal", # Fis name
 print(nutri_balance_fis)
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-nutri_balance_aggreg <- NewFusionAggreg("Nutri_Bal", 
-  NewAggregFis(nutri_balance_fis), 
-  ph, org_matter, macronutrients_aggreg)
+nutri_balance_aggreg <- NewFusionAggreg(
+  "Nutri_Bal",
+  NewAggregFis(nutri_balance_fis),
+  ph, org_matter, macronutrients_aggreg
+)
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-chemical_aggreg <- NewFusionAggreg("Chemical", 
-  NewAggregWam(weights = c(0.3, 0.7)), 
-  cadmium, nutri_balance_aggreg)
+chemical_aggreg <- NewFusionAggreg(
+  "Chemical",
+  NewAggregWam(weights = c(0.3, 0.7)),
+  cadmium, nutri_balance_aggreg
+)
 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 print(chemical_aggreg, "aggreg", "mf")

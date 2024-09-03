@@ -7,7 +7,7 @@
 NewAggregFis(fis, output_index = 1)
 }
 \arguments{
-\item{fis}{\link{Fis} object, The Fis to be used in the aggregation operator}
+\item{fis}{\link[FisPro:Fis]{FisPro::Fis} object, The Fis to be used in the aggregation operator}
 
 \item{output_index}{\link{integer} value, The index (1-based index) of the output in the Fis to be used in the aggregation (the default is 1)}
 }

@@ -1,4 +1,3 @@
-
 expect_name <- function(object, expected_name, label = NULL) {
   actual <- quasi_label(rlang::enquo(object), label)
   expect(

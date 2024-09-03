@@ -39,10 +39,9 @@
 #
 ################################################################################
 
+#' @keywords internal
 #' @title GeoFIS package
 #' @name GeoFIS
-#' @aliases GeoFIS-package
-#' @docType package
 #' @description [GeoFIS](https://www.geofis.org) is an open source software that provides methods for processing spatial data for decision making through a user-friendly interface \insertCite{agriculture8060073}{GeoFIS}.\cr
 #' This R package implements two main functionalities: management zone delineation \insertCite{Pedroso10}{GeoFIS} and data aggregation \insertCite{denys20-ascii,gistam20}{GeoFIS}.
 #' All the mentioned publications are available from the [GeoFIS](https://www.geofis.org) web site.
@@ -71,4 +70,7 @@
 #'   \url{https://www.geofis.org}
 #' }
 #'
+"_PACKAGE"
+
+#' @importFrom magrittr %>%
 NULL

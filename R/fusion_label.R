@@ -42,7 +42,7 @@
 #' @title Class "FusionLabel"
 #' @name FusionLabel
 #' @docType class
-#' @description Defines the allowed labels for the [Mf]s of the fuzzy inputs or output in the [Fis] "Fusion"
+#' @description Defines the allowed labels for the [FisPro::Mf]s of the fuzzy inputs or output in the [FisPro::Fis] "Fusion"
 #' @importFrom R6 R6Class
 #'
 #' @export
@@ -75,12 +75,12 @@ FusionLabel <- R6Class("FusionLabel",
     }
   ),
   public = list(
-    #' @description Get the allowed labels depending on the granularity in the [Fis]\cr
+    #' @description Get the allowed labels depending on the granularity in the [FisPro::Fis]\cr
     #' for granularity 2, allowed labels are: \[low, high\]\cr
     #' for granularity 3, allowed labels are: \[low, average, high\]\cr
     #' for granularity 4, allowed labels are: \[very_low, low, high, very_high\]\cr
     #' for granularity 5, allowed labels are: \[very_low, low, average, high, very_high\]
-    #' @param granularity [integer] value, The granularity of the fuzzy inputs or output in the [Fis] (value in range \[2, 5\])
+    #' @param granularity [integer] value, The granularity of the fuzzy inputs or output in the [FisPro::Fis] (value in range \[2, 5\])
     #' @return [character] vector, The allowed labels for the granularity
     get_labels = function(granularity) {
       .CheckGranularityRange(granularity)

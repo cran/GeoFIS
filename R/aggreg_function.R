@@ -67,6 +67,7 @@ setMethod(f = "Aggreg", signature = "AggregFunction", definition = function(obje
   return(Aggregate(node, attribute, aggFun = object@func))
 })
 
+#' @export
 toString.AggregFunction <- function(x, ...) {
   if (length(x@func.name)) {
     return(x@func.name)

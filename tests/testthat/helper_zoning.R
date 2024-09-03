@@ -1,4 +1,3 @@
-
 expect_map_equal <- function(map, expected_map) {
   actual <- quasi_label(rlang::enquo(map))
   expect <- quasi_label(rlang::enquo(expected_map))

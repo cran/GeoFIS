@@ -361,7 +361,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 <h1 class="title toc-ignore">Data Fusion with GeoFIS</h1>
-<h3 class="subtitle">Package GeoFIS 1.0.4</h3>
+<h3 class="subtitle">Package GeoFIS 1.1.0</h3>
 <h4 class="author">Jean-Luc Lablée, Serge Guillaume</h4>
 
 
@@ -522,15 +522,18 @@ rule-based aggregation nodes and 1 WAM node.</p>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ph <span class="ot">&lt;-</span> <span class="fu">NewFusionInput</span>(<span class="st">&quot;pH&quot;</span>, <span class="fu">NewMfTrapezoidal</span>(<span class="dv">5</span>, <span class="fl">5.5</span>, <span class="fl">6.5</span>, <span class="fl">7.5</span>))</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>cadmium <span class="ot">&lt;-</span> <span class="fu">NewFusionInput</span>(<span class="st">&quot;Cd&quot;</span>, <span class="fu">NewMfTrapezoidalInf</span>(<span class="dv">0</span>, <span class="fl">0.43</span>), <span class="st">&quot;Cadmium&quot;</span>)</span></code></pre></div>
 <p>The Macronutrients rulebase:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>macronutrients_fis <span class="ot">&lt;-</span> <span class="fu">NewFisFusion</span>(<span class="st">&quot;MacN&quot;</span>, <span class="co"># Fis name</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Bal_Gap&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;P&quot;</span>, <span class="st">&quot;N_Gap&quot;</span>, <span class="st">&quot;Base_Sat&quot;</span>), <span class="co"># Fis inputs names</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="co"># Fis inputs granularities</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;MacN&quot;</span>, <span class="co"># Fis output name</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.2</span>, <span class="fl">0.25</span>, <span class="fl">0.35</span>, <span class="fl">0.4</span>, <span class="fl">0.45</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.45</span>, <span class="fl">0.5</span>, <span class="fl">0.55</span>, <span class="fl">0.65</span>, <span class="fl">0.7</span>, <span class="fl">0.75</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.45</span>, <span class="fl">0.5</span>, <span class="fl">0.55</span>, <span class="fl">0.65</span>, <span class="fl">0.7</span>, </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.55</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.75</span>, <span class="fl">0.8</span>, <span class="fl">0.85</span>, <span class="fl">0.9</span>, <span class="dv">1</span>) <span class="co"># Fis conclusions</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>macronutrients_fis <span class="ot">&lt;-</span> <span class="fu">NewFisFusion</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;MacN&quot;</span>, <span class="co"># Fis name</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Bal_Gap&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;P&quot;</span>, <span class="st">&quot;N_Gap&quot;</span>, <span class="st">&quot;Base_Sat&quot;</span>), <span class="co"># Fis inputs names</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="co"># Fis inputs granularities</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;MacN&quot;</span>, <span class="co"># Fis output name</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.2</span>, <span class="fl">0.25</span>, <span class="fl">0.35</span>, <span class="fl">0.4</span>, <span class="fl">0.45</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.45</span>, <span class="fl">0.5</span>, <span class="fl">0.55</span>, <span class="fl">0.65</span>, <span class="fl">0.7</span>, <span class="fl">0.75</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.45</span>, <span class="fl">0.5</span>, <span class="fl">0.55</span>, <span class="fl">0.65</span>, <span class="fl">0.7</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.55</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.75</span>, <span class="fl">0.8</span>, <span class="fl">0.85</span>, <span class="fl">0.9</span>, <span class="dv">1</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="co"># Fis conclusions</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Print the Macronutrients rulebase:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(macronutrients_fis)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; name = &quot;MacN&quot;</span></span>
@@ -610,16 +613,19 @@ rule-based aggregation nodes and 1 WAM node.</p>
 <span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2, 2, 2, 2, 1, 0.9</span></span>
 <span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2, 2, 2, 2, 2, 1</span></span></code></pre></div>
 <p>The Macronutrients aggregation node:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>macronutrients_aggreg <span class="ot">&lt;-</span> <span class="fu">NewFusionAggreg</span>(<span class="st">&quot;MacN&quot;</span>, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">NewAggregFis</span>(macronutrients_fis), </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  balance_gap, potassium, phosphorus, n_gap, base_sat)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>macronutrients_aggreg <span class="ot">&lt;-</span> <span class="fu">NewFusionAggreg</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;MacN&quot;</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">NewAggregFis</span>(macronutrients_fis),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  balance_gap, potassium, phosphorus, n_gap, base_sat</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>The Soil Nutritional Balance rulebase:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nutri_balance_fis <span class="ot">&lt;-</span> <span class="fu">NewFisFusion</span>(<span class="st">&quot;Nutri_Bal&quot;</span>, <span class="co"># Fis name </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;pH&quot;</span>, <span class="st">&quot;OM&quot;</span>, <span class="st">&quot;MacN&quot;</span>), <span class="co"># Fis inputs names</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="co"># Fis inputs granularities</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Nutri_Bal&quot;</span>, <span class="co"># Fis output name</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">1.0</span>) <span class="co"># Fis conclusions</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nutri_balance_fis <span class="ot">&lt;-</span> <span class="fu">NewFisFusion</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Nutri_Bal&quot;</span>, <span class="co"># Fis name</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;pH&quot;</span>, <span class="st">&quot;OM&quot;</span>, <span class="st">&quot;MacN&quot;</span>), <span class="co"># Fis inputs names</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="co"># Fis inputs granularities</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Nutri_Bal&quot;</span>, <span class="co"># Fis output name</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">1.0</span>) <span class="co"># Fis conclusions</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Print the Macronutrients rulebase:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nutri_balance_fis)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; name = &quot;Nutri_Bal&quot;</span></span>
@@ -663,13 +669,17 @@ rule-based aggregation nodes and 1 WAM node.</p>
 <span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2, 2, 1, 0.7</span></span>
 <span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2, 2, 2, 1</span></span></code></pre></div>
 <p>The Soil Nutritional aggregation node:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nutri_balance_aggreg <span class="ot">&lt;-</span> <span class="fu">NewFusionAggreg</span>(<span class="st">&quot;Nutri_Bal&quot;</span>, </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">NewAggregFis</span>(nutri_balance_fis), </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  ph, org_matter, macronutrients_aggreg)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nutri_balance_aggreg <span class="ot">&lt;-</span> <span class="fu">NewFusionAggreg</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Nutri_Bal&quot;</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">NewAggregFis</span>(nutri_balance_fis),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  ph, org_matter, macronutrients_aggreg</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>The Chemical aggregation node:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chemical_aggreg <span class="ot">&lt;-</span> <span class="fu">NewFusionAggreg</span>(<span class="st">&quot;Chemical&quot;</span>, </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">NewAggregWam</span>(<span class="at">weights =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.7</span>)), </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  cadmium, nutri_balance_aggreg)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chemical_aggreg <span class="ot">&lt;-</span> <span class="fu">NewFusionAggreg</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Chemical&quot;</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">NewAggregWam</span>(<span class="at">weights =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.7</span>)),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  cadmium, nutri_balance_aggreg</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Print the Chemical aggregation tree with aggregation operators and
 input leafs:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chemical_aggreg, <span class="st">&quot;aggreg&quot;</span>, <span class="st">&quot;mf&quot;</span>)</span>

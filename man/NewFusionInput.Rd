@@ -10,12 +10,12 @@ NewFusionInput(name, mf, attribute = name)
 \arguments{
 \item{name}{\link{character} vector, The name of the node}
 
-\item{mf}{\link{Mf} object, The membership function to be used to compute the satisfaction degree of the input}
+\item{mf}{\link[FisPro:Mf]{FisPro::Mf} object, The membership function to be used to compute the satisfaction degree of the input}
 
 \item{attribute}{\link{character} vector, The attribute name in the source dataset (default is the same as name)}
 }
 \value{
-\link{Node} object
+\link[data.tree:Node]{data.tree::Node} object
 }
 \description{
 Function to create an input node to be used in \link{Fusion}

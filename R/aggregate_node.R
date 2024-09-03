@@ -44,8 +44,7 @@
   function(node) {
     if (isLeaf(node)) {
       node$sat <- node$mf$degree(source[[node$attribute]]) # [[ or unname
-    }
-    else {
+    } else {
       node$sat <- Aggreg(node$aggreg, node, "sat")
     }
   }
@@ -72,8 +71,7 @@ setMethod(f = ".aggregate_node", signature = c("data.frame", "Node"), definition
     # the result of apply function for a leaf node is a numeric vector
     # must be binded in column and named to the leaf name
     return(setNames(as.data.frame(cbind(apply(source, 1, .aggregate_node, node))), node$name))
-  }
-  else {
+  } else {
     # the result of apply function for a node is a matrix, must be transposed
     return(.remove_duplicate_columns(as.data.frame(t(apply(source, 1, .aggregate_node, node)))))
   }

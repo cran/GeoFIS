@@ -89,6 +89,7 @@ setMethod(f = "Aggreg", signature = "AggregWam", definition = function(object, n
   return(Aggregate(node, attribute, aggFun = function(x) .ComputeWam(x, object@weights)))
 })
 
+#' @export
 toString.AggregWam <- function(x, ...) {
   return(sprintf("wam(%s)", paste(x@weights, collapse = ", ")))
 }

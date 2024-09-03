@@ -1,3 +1,8 @@
+# GeoFIS 1.1.0
+
+* Remove deprecated dependencies rgeos and rgdal (replaced by sf)
+* Add DataInZone function
+
 # GeoFIS 1.0.4
 
 * Fix compilation errors of deprecated C++ functions

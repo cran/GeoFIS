@@ -113,7 +113,7 @@ MinkowskiDistance <- function(power = 2) {
 #' The fuzzy distance function is based on a fuzzy partition that allows for integrating expert knowledge into distance calculations\cr
 #' To be used with the [Zoning] `attribute_distance` field
 #'
-#' @param fisin [FisIn] object, The partition used for the fuzzy distance (must be a standardized fuzzy partition)
+#' @param fisin [FisPro::FisIn] object, The partition used for the fuzzy distance (must be a standardized fuzzy partition)
 #' @return Fuzzy distance object
 #'
 #' @references {

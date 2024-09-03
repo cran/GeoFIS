@@ -27,7 +27,7 @@ A complete use-case example is described in the vignette "Zoning with GeoFIS"
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{border}}{\link{SpatialPolygons} object, The border used to limit the processed area, or \code{NULL} if the Convex Hull of data source is used\cr
+\item{\code{border}}{\link[sp:SpatialPolygons]{sp::SpatialPolygons} object, The border used to limit the processed area, or \code{NULL} if the Convex Hull of data source is used\cr
 Only data points within the border polygon are processed\cr
 The default value is \code{NULL}}
 
@@ -86,7 +86,7 @@ Constructor, create a new instance of \link{Zoning}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{source}}{\link{SpatialPointsDataFrame} or \link{SpatialMultiPointsDataFrame} object, The data source}
+\item{\code{source}}{\link[sp:SpatialPoints]{sp::SpatialPointsDataFrame} or \link[sp:SpatialMultiPoints]{sp::SpatialMultiPointsDataFrame} object, The data source}
 
 \item{\code{warn}}{\link{logical} value, Show warnings if TRUE, default value is TRUE}
 }
@@ -105,7 +105,7 @@ The last condition is required by the min-max standardization process
 }
 
 \subsection{Returns}{
-\link{SpatialPointsDataFrame} object
+\link[sp:SpatialPoints]{sp::SpatialPointsDataFrame} object
 }
 }
 \if{html}{\out{<hr>}}
@@ -128,7 +128,7 @@ Get the Voronoi map
 }
 
 \subsection{Returns}{
-\link{SpatialPolygons} object
+\link[sp:SpatialPolygons]{sp::SpatialPolygons} object
 }
 }
 \if{html}{\out{<hr>}}
@@ -151,7 +151,7 @@ Get the neighborhood map
 }
 
 \subsection{Returns}{
-\link{SpatialLinesDataFrame} object
+\link[sp:SpatialLines]{sp::SpatialLinesDataFrame} object
 }
 }
 \if{html}{\out{<hr>}}
@@ -194,7 +194,7 @@ Get the map corresponding to a number of zones
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-\link{SpatialPolygonsDataFrame} object
+\link[sp:SpatialPolygons]{sp::SpatialPolygonsDataFrame} object
 }
 }
 \if{html}{\out{<hr>}}
@@ -214,7 +214,7 @@ Get the maps corresponding to a number of zones
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-\link{list} of \link{SpatialPolygonsDataFrame} object
+\link{list} of \link[sp:SpatialPolygons]{sp::SpatialPolygonsDataFrame} object
 }
 }
 }

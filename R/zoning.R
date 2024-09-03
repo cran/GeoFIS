@@ -50,6 +50,22 @@
   is.numeric(x) && !any(is.na(x)) && (length(unique(x)) != 1)
 }
 
+#' @name .convex_hull
+#' @description makes the convex hull of a spatial object
+#' @param x Spatial, The input object
+#'
+#' @noRd
+#' @importFrom sf st_as_sfc st_combine st_convex_hull st_is_valid as_Spatial
+#' @keywords internal
+.convex_hull <- function(x) {
+  return(
+    st_as_sfc(x) %>%
+      st_combine() %>%
+      st_convex_hull() %>%
+      as_Spatial()
+  )
+}
+
 #' @title Class "Zoning"
 #' @name Zoning
 #' @docType class
@@ -57,7 +73,6 @@
 #' A complete use-case example is described in the vignette "Zoning with GeoFIS"
 #'
 #' @importFrom R6 R6Class
-#' @importFrom rgeos gConvexHull gIsValid
 #' @import sp
 #'
 #' @references {
@@ -104,7 +119,7 @@ Zoning <- R6Class("Zoning",
     },
     .check_border_geometry = function(border) {
       if (!is(border, "SpatialPolygons")) stop("the border must be a 'SpatialPolygons' object")
-      if (!gIsValid(border)) stop("the border is not a valid polygon")
+      if (!st_is_valid(st_as_sfc(border))) stop("the border is not a valid polygon")
       polygons_list <- border@polygons
       if (length(polygons_list) != 1) stop("the border must contain only one polygon")
       polygons <- polygons_list[[1]]
@@ -147,7 +162,7 @@ Zoning <- R6Class("Zoning",
     }
   ),
   active = list(
-    #' @field border [SpatialPolygons] object, The border used to limit the processed area, or `NULL` if the Convex Hull of data source is used\cr
+    #' @field border [sp::SpatialPolygons] object, The border used to limit the processed area, or `NULL` if the Convex Hull of data source is used\cr
     #' Only data points within the border polygon are processed\cr
     #' The default value is `NULL`
     border = function(border) {
@@ -155,7 +170,7 @@ Zoning <- R6Class("Zoning",
         return(private$.border)
       } else {
         if (is.null(border)) {
-          private$.zoning_wrapper$set_border(gConvexHull(private$.zonable_data))
+          private$.zoning_wrapper$set_border(.convex_hull(private$.zonable_data))
         } else {
           private$.check_border(border)
           private$.zoning_wrapper$set_border(border)
@@ -235,7 +250,7 @@ Zoning <- R6Class("Zoning",
   ),
   public = list(
     #' @description Constructor, create a new instance of [Zoning]
-    #' @param source [SpatialPointsDataFrame] or [SpatialMultiPointsDataFrame] object, The data source
+    #' @param source [sp::SpatialPointsDataFrame] or [sp::SpatialMultiPointsDataFrame] object, The data source
     #' @param warn [logical] value, Show warnings if TRUE, default value is TRUE
     initialize = function(source, warn = TRUE) {
       if (missing(source) || !(is(source, "SpatialPointsDataFrame") || is(source, "SpatialMultiPointsDataFrame"))) stop("zoning data source must be a 'SpatialPointsDataFrame' or 'SpatialMultiPointsDataFrame' object")
@@ -246,7 +261,7 @@ Zoning <- R6Class("Zoning",
       private$.zonable_data <- .filter_data_frame(source, .is_zonable)
       private$.check_zonable_data(source, private$.zonable_data, warn)
       private$.zoning_wrapper <- new(zoning_wrapper, private$.zonable_data)
-      private$.zoning_wrapper$set_border(gConvexHull(private$.zonable_data))
+      private$.zoning_wrapper$set_border(.convex_hull(private$.zonable_data))
       private$.zoning_wrapper$set_all_neighborhood()
       private$.zoning_wrapper$set_attribute_distances(rep(EuclideanDistance(), times = private$.zonable_data_size()))
       private$.zoning_wrapper$set_zone_distance(MaximumDistance())
@@ -257,7 +272,7 @@ Zoning <- R6Class("Zoning",
     #' @description Get the zonable data\cr
     #' Keep only the attributes that can be used in the zoning process, meaning numeric atributes, without missing values and with a range that is not limited to a unique value\cr
     #' The last condition is required by the min-max standardization process
-    #' @return [SpatialPointsDataFrame] object
+    #' @return [sp::SpatialPointsDataFrame] object
     zonable_data = function() {
       return(private$.zonable_data)
     },
@@ -268,7 +283,7 @@ Zoning <- R6Class("Zoning",
     },
 
     #' @description Get the Voronoi map
-    #' @return [SpatialPolygons] object
+    #' @return [sp::SpatialPolygons] object
     voronoi_map = function() {
       return(private$.zoning_wrapper$get_voronoi_map())
     },
@@ -280,7 +295,7 @@ Zoning <- R6Class("Zoning",
     },
 
     #' @description Get the neighborhood map
-    #' @return [SpatialLinesDataFrame] object
+    #' @return [sp::SpatialLinesDataFrame] object
     neighborhood_map = function() {
       return(private$.zoning_wrapper$get_neighborhood_map())
     },
@@ -302,14 +317,14 @@ Zoning <- R6Class("Zoning",
 
     #' @description Get the map corresponding to a number of zones
     #' @param number_of_zones [integer] value, The number of zones in the map
-    #' @return [SpatialPolygonsDataFrame] object
+    #' @return [sp::SpatialPolygonsDataFrame] object
     map = function(number_of_zones) {
       return(private$.zoning_wrapper$get_merge_map(number_of_zones))
     },
 
     #' @description Get the maps corresponding to a number of zones
     #' @param number_of_zones [integer] vector, The number of zones in each map
-    #' @return [list] of [SpatialPolygonsDataFrame] object
+    #' @return [list] of [sp::SpatialPolygonsDataFrame] object
     maps = function(number_of_zones) {
       return(private$.zoning_wrapper$get_merge_maps(number_of_zones))
     }
