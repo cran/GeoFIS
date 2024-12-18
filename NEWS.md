@@ -1,3 +1,7 @@
+# GeoFIS 1.1.1
+
+* Fix BH 1.87.0-0 compilation error
+
 # GeoFIS 1.1.0
 
 * Remove deprecated dependencies rgeos and rgdal (replaced by sf)

@@ -1,7 +1,7 @@
 Package: GeoFIS
 Type: Package
 Title: Spatial Data Processing for Decision Making
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: c(
   person("Serge", "Guillaume", email = "serge.guillaume@inrae.fr", role = "aut"),
   person("Jean-Luc", "Lablée", email = "jean-luc.lablee@inrae.fr", role = c("aut", "cre")),
@@ -27,6 +27,6 @@ LinkingTo: Rcpp, BH, FisPro
 Suggests: testthat, rlang, knitr, rmarkdown, RColorBrewer, R.rsp
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr, R.rsp
-Packaged: 2024-08-30 14:50:58 UTC; jllablee
+Packaged: 2024-12-18 09:16:03 UTC; jllablee
 Repository: CRAN
-Date/Publication: 2024-09-03 08:50:10 UTC
+Date/Publication: 2024-12-18 14:30:10 UTC

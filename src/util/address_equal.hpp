@@ -60,17 +60,8 @@ template <class T> inline bool address_equal(const T &lhs, const T &rhs) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-template <class T> struct address_equal_traits {
-
-	typedef boost::reference_wrapper<const T> reference_type;
-	typedef boost::_bi::bind_t<bool, util::address_equal_to<T>, boost::_bi::list2<boost::arg<1>, reference_type> > bind_type;
-};
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-template <class T> inline typename address_equal_traits<T>::bind_type address_equal(const T &value) {
-	return boost::bind<bool>(util::address_equal_to<T>(), boost::placeholders::_1, boost::cref(value));
+template <class T> inline auto address_equal(const T &value) {
+    return boost::bind<bool>(util::address_equal_to<T>(), boost::placeholders::_1, boost::cref(value));
 }
 
 } // namespace util

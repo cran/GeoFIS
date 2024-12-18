@@ -1,6 +1,6 @@
-325fe76b2b236b7f065d9f353ef16560 *DESCRIPTION
+86dc117e5d0cd09c0ce6ccb5e742130c *DESCRIPTION
 77e54c55299c311331dfb37176f44a6b *NAMESPACE
-b1ffeffbea1fb054e81abd533eb004ee *NEWS.md
+da8b9bd1d01cdc24dbe8d74f7989dbf1 *NEWS.md
 207eb00901dc054d74fcc65b50d2a6d9 *R/aggreg.R
 30d1da5ab2f41c4b058dbc440add608a *R/aggreg_fis.R
 6551f307c6b8962b3a747b97d8dab788 *R/aggreg_function.R
@@ -23,8 +23,8 @@ dcc07ead5f1f459defe8191afd4abd56 *R/sp.R
 a9b2a939fb0c1a758465950a50dbe59a *R/tolima_data.R
 2acff1f96a4489877b9416ee2b7446c3 *R/zoning.R
 29a96c39d98aa1788d930697f9d8ffe6 *README.md
-0f88882a11c58e1aab9d27dbc8c2968f *build/partial.rdb
-0c1a85d50ac019824ee0f93517790123 *build/vignette.rds
+d762d6b525ae36453df0f5cbe276dba8 *build/partial.rdb
+29ba40eef19567f7b12fc93a31f0d89a *build/vignette.rds
 499ce69566e1a3383177c1036c1fddb1 *cleanup
 03dc316d9927313bde912681cd3eb209 *cleanup.win
 6a8068416ef9d167ebce7382f1ee9583 *data/conductivity_2014.rda
@@ -34,7 +34,7 @@ f130b604951d93663f99620a34d96e85 *data/tolima.rda
 bf5f62f20320ab92aba79f9d3fa2ea3e *inst/REFERENCES.bib
 b771c1efcb9fbfbaa599842b2aaae680 *inst/doc/data-fusion.R
 afdee9287ff02ffbccb1ffea4b67444f *inst/doc/data-fusion.Rmd
-2cf0e28fc61c4efcfdb9c3f623fee438 *inst/doc/data-fusion.html
+b1b57f29a77daefd0636bf5b3ec6460d *inst/doc/data-fusion.html
 dbe32f0bf45ec063ec70abb6a7f2579a *inst/doc/zoning.html
 9f015bd16c2c16cc3968ff8c6c97fbec *inst/doc/zoning.html.asis
 840dcca319abc9b5325fcfab63259e3d *man/AggregFis.Rd
@@ -735,7 +735,7 @@ b79412dd07349a3aff43366fa72a665b *src/CGAL/value_type_traits.h
 209be9f5d845f9ef799b08aeaa16eb4d *src/CGAL/version.h
 67f16c70b5753f51401b837c7583cd57 *src/CGAL/version_macros.h
 b05733b50ec6c2a859f1d0c82b390fb5 *src/CGAL/wmult.h
-a4c3341b4ca14740ef0552ff4bc6c4c0 *src/Makevars
+35048a87fd2eae9c51c2f1cb27a8da0f *src/Makevars
 5a185bf6fb7ea190488d33c2eedab19f *src/RcppExports.cpp
 bedadbc0611cd4b668c048db878cd407 *src/boost/variant/is_variant.hpp
 4985c57c446788f06b5132aa57f325f0 *src/geofis/algorithm/feature/feature_normalization.hpp
@@ -885,7 +885,7 @@ fb9d667f8a4f8a3cfdafdc1ef62aebf0 *src/geofis/rcpp/process/zoning/voronoi/voronoi
 a21eae6908e6170923d7a1b369f0a85c *src/rcpp/vector_equal_to.hpp
 2cca2b9e0a32977373328578cc058a26 *src/rcpp/vector_range.hpp
 92add99dc1ebd6fe8ff7ab605cb34c20 *src/util/address.hpp
-a4a5096942485d6dcf8446127d5ecd79 *src/util/address_equal.hpp
+b6730c235f794bf02472098643edb0bc *src/util/address_equal.hpp
 9afc165e401406a8638f135e088ec751 *src/util/algorithm/normalization.hpp
 59a024eb3827bf2afc7863a3b925895b *src/util/assert.hpp
 93dab54fe92695030cb1d321a1d31ff6 *src/util/dont_care.hpp
